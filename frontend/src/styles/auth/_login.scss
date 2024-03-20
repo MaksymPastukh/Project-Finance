@@ -1,12 +1,14 @@
+
 .form {
   padding: 313px 0 313px 0;
 
   .container {
     .login-content {
       max-width: 400px;
+
       .login-title {
         margin-top: 60px;
-        font: 500 40px "Roboto", sans-serif;
+        font: 500 40px "Roboto-Medium", sans-serif;
         text-align: center;
         color: #052c65;
       }
@@ -17,12 +19,14 @@
 
 
         .form-group {
-          border: 1px solid #e9ecef;
-          border-radius: 4px;
+
+
           margin-top: 10px;
 
           .form-input {
-            border: 0;
+            border: 1px solid #e9ecef;
+
+            border-radius: 0 4px 4px 0;
             outline: 0;
             width: 100%;
             height: 100%;
@@ -32,17 +36,17 @@
             line-height: 22px;
 
             &::placeholder {
-              font: 400 15px / 1.6 "Roboto", sans-serif;
+              font-size: 15px;
               color: #6c757d;
             }
 
           }
 
           label {
-          img{
-            width: 38px;
-            height: 38px;
-          }
+            img {
+              width: 43px;
+              height: 38px;
+            }
           }
         }
 
@@ -73,6 +77,20 @@
           }
         }
 
+      }
+
+      .form-link-signup {
+        margin-top: 10px;
+        font-size: 12px;
+
+        a {
+          margin-left: 10px;
+          font-size: 12px;
+          text-decoration: underline;
+          text-decoration-skip-ink: none;
+          color: #0d6efd;
+
+        }
       }
 
       .form-button {

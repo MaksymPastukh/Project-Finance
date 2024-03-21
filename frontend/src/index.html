@@ -89,16 +89,56 @@
                     <div class="mr-5 tabs__header-item">All</div>
                     <div class="mr-5 tabs__header-item">Interval</div>
                     <div class="mr-5 tabs__header-interval">
-                        from <input type="text" class="w-16 h-11 focus:outline-none" placeholder="Date">
-                        to <input type="text" class="w-16 h-11 focus:outline-none" placeholder="Date">
+                      <span class="mr-1">from</span>  <input type="text" class="w-12 h-11 mr-1 focus:outline-none" placeholder="Date">
+                        <span class="mr-1">to</span> <input type="text" class="w-16 h-11 focus:outline-none" placeholder="Date">
                     </div>
                 </div>
-                <div class="tabs__content">
-                    <div class="tabs__content-item">1</div>
-                    <div class="tabs__content-item">2</div>
-                    <div class="tabs__content-item">3</div>
-                    <div class="tabs__content-item">4</div>
-                    <div class="tabs__content-item">5</div>
+                <div class="tabs-content">
+                    <div class="tabs-content-item flex">
+                        <div class="item-revenues items flex flex-col items-center">
+                            <div class="title text-center">
+                                Revenues
+                            </div>
+                            <div class="flex revenues-graph-item mt-5">
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph red"></div>Red</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph orange"></div>Orange</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph yellow"></div>Yellow</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph green"></div>Green</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph blue"></div>Blue</div>
+                            </div>
+                            <div class="revenues-graph mt-10">
+                                <svg width="362" height="362" viewBox="0 0 362 362" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M361 180.999C361 153.897 354.879 127.144 343.095 102.737L181 180.999H361Z" fill="#0D6EFD" stroke="white" />
+                                    <path d="M343.095 102.737C322.846 60.7985 287.131 28.3403 243.453 12.1819L181 181L343.095 102.737Z" fill="#20C997" stroke="white" />
+                                    <path d="M243.453 12.1818C218.759 3.04643 192.362 -0.560314 166.122 1.61592C139.883 3.79215 114.44 11.6984 91.5887 24.7771C68.7371 37.8558 49.033 55.7885 33.8658 77.3106C18.6985 98.8328 8.43756 123.42 3.8064 149.339L181 181L243.453 12.1818Z" fill="#DC3545" stroke="white" />
+                                    <path d="M3.80645 149.34C-2.7924 186.271 2.31328 224.342 18.4099 258.23C34.5064 292.117 60.7894 320.129 93.5847 338.349C126.38 356.568 164.049 364.085 201.325 359.849C238.602 355.612 273.623 339.835 301.494 314.721L181 181L3.80645 149.34Z" fill="#FD7E14" stroke="white" />
+                                    <path d="M301.494 314.72C320.225 297.842 335.201 277.217 345.452 254.181C355.703 231.146 361 206.213 361 181H181L301.494 314.72Z" fill="#FFC107" stroke="white" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="item-outlay items flex flex-col items-center">
+                            <div class="title text-center">
+                                Outlay
+                            </div>
+                            <div class="flex outlay-graph-item mt-5">
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph red"></div>Red</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph orange"></div>Orange</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph yellow"></div>Yellow</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph green"></div>Green</div>
+                                <div class="graph-item mr-2.5 flex items-center"><div class="mr-2.5 block-color-graph blue"></div>Blue</div>
+                            </div>
+                            <div class="outlay-graph mt-10">
+                                <svg width="362" height="362" viewBox="0 0 362 362" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M361 180.999C361 153.897 354.879 127.144 343.095 102.737L181 180.999H361Z" fill="#0D6EFD" stroke="white" />
+                                    <path d="M343.095 102.737C322.846 60.7985 287.131 28.3403 243.453 12.1819L181 181L343.095 102.737Z" fill="#20C997" stroke="white" />
+                                    <path d="M243.453 12.1818C218.759 3.04643 192.362 -0.560314 166.122 1.61592C139.883 3.79215 114.44 11.6984 91.5887 24.7771C68.7371 37.8558 49.033 55.7885 33.8658 77.3106C18.6985 98.8328 8.43756 123.42 3.8064 149.339L181 181L243.453 12.1818Z" fill="#DC3545" stroke="white" />
+                                    <path d="M3.80645 149.34C-2.7924 186.271 2.31328 224.342 18.4099 258.23C34.5064 292.117 60.7894 320.129 93.5847 338.349C126.38 356.568 164.049 364.085 201.325 359.849C238.602 355.612 273.623 339.835 301.494 314.721L181 181L3.80645 149.34Z" fill="#FD7E14" stroke="white" />
+                                    <path d="M301.494 314.72C320.225 297.842 335.201 277.217 345.452 254.181C355.703 231.146 361 206.213 361 181H181L301.494 314.72Z" fill="#FFC107" stroke="white" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

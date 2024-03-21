@@ -41,12 +41,51 @@
         }
       }
     }
-    &__content {
+    .tabs-content {
       margin-top: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 75px;
+
+      .items {
+        min-width: 437px;
+
+        .title {
+          font-size: 28px;
+          color: #290661;
+        }
+
+        .graph-item {
+          font-size: 12px;
+          color: #000000;
+
+          .block-color-graph {
+            width: 35px;
+            height: 10px;
+          }
+
+          .red {
+            background: #dc3545;
+          }
+
+          .orange {
+            background: #fd7e14;
+          }
+
+          .yellow {
+            background: #ffc107;
+          }
+
+          .green {
+            background: #20c997;
+          }
+
+          .blue {
+            background: #0d6efd;
+          }
+        }
+      }
     }
   }
 }

@@ -1,0 +1,52 @@
+.main-content {
+  padding: 100px 60px 133px 94px;
+  .main-title {
+    font-size: 40px;
+    color: #052c65;
+    display: block;
+  }
+
+  .tabs {
+    width: 100%;
+    margin-top: 60px;
+    &__header {
+
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
+      }
+      &-item {
+        padding: 7px 17.5px;
+        cursor: pointer;
+        border: 1px solid #6c757d;
+        border-radius: 4px;
+        color: #6c757d;
+        width: 100px;
+        height: 37px;
+        &.active {
+          color: white;
+          background: #6c757d;
+        }
+
+
+      }
+
+      &-interval {
+        color: #6c757d;
+       input:focus {
+         border: none;
+
+       }
+        input::placeholder {
+          text-decoration: underline;
+        }
+      }
+    }
+    &__content {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 75px;
+    }
+  }
+}

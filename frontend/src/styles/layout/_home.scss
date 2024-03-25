@@ -12,11 +12,14 @@
     margin-top: 6rem;
 
     .tabs-header {
+      display: flex;
+      align-items: center;
 
       .tabs-header-item {
         padding: 7px 17.5px;
         cursor: pointer;
         border: 1px solid #6c757d;
+        margin-right: 20px;
         border-radius: 4px;
         color: #6c757d;
         width: 10rem;
@@ -33,6 +36,17 @@
         color: #6c757d;
         font-size: 16px;
 
+        .input-interval {
+          width: 6.3rem;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        span {
+          margin-right: .9rem;
+        }
 
         input:focus {
           border: none;
@@ -60,9 +74,18 @@
       }
 
       .tabs-content-item {
+        display: flex;
+        justify-content: space-between;
+
+        .item-revenues {
+          margin-left: 2.4rem;
+        }
 
         .items {
           min-width: 43.7rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
 
           .title {
@@ -72,35 +95,51 @@
 
           .graph-item {
             display: flex;
-            align-items: center;
-            font-size: 12px;
-            color: #000000;
 
 
-            .block-color-graph {
-              width: 3.5rem;
-              height: 10px;
+            .graph-items {
+              margin-top: 2rem;
+              display: flex;
+              align-items: center;
+              font-size: 12px;
+              color: #000000;
+              margin-right: 1rem;
+
+
+              .block-color-graph {
+                width: 3.5rem;
+                height: 10px;
+              }
+
+              .red {
+                background: #dc3545;
+                margin-right: 1rem;
+              }
+
+              .orange {
+                background: #fd7e14;
+                margin-right: 1rem;
+              }
+
+              .yellow {
+                background: #ffc107;
+                margin-right: 1rem;
+              }
+
+              .green {
+                background: #20c997;
+                margin-right: 1rem;
+              }
+
+              .blue {
+                background: #0d6efd;
+                margin-right: 1rem;
+              }
             }
+          }
 
-            .red {
-              background: #dc3545;
-            }
-
-            .orange {
-              background: #fd7e14;
-            }
-
-            .yellow {
-              background: #ffc107;
-            }
-
-            .green {
-              background: #20c997;
-            }
-
-            .blue {
-              background: #0d6efd;
-            }
+          .graph {
+            margin-top: 4rem;
           }
         }
       }

@@ -1,19 +1,21 @@
 .side-bar {
-  width: 22rem;
+  max-width: 23rem;
   min-height: 100vh;
   border-right: 1px solid #d9d9d9;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 
   .logo {
-
     padding: 4rem 7.1rem 2rem 5rem;
     border-bottom: 1px solid #d9d9d9;
 
     a {
       img {
-        width: 100%;
+        max-width: 100%;
       }
     }
-
   }
 
   .navigation {
@@ -60,7 +62,7 @@
           display: flex;
           min-width: 17.8rem;
           height: 4rem;
-          padding: 1rem 1.6rem;
+          padding: 1rem;
           text-decoration: none;
           align-items: center;
           color: #052c65;
@@ -72,7 +74,16 @@
         }
       }
 
-      .test {
+      .selector {
+        a {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+
+          svg {
+            margin-left: 7rem;
+          }
+        }
         .select {
           display: none;
           position: absolute;
@@ -126,6 +137,8 @@
     padding: 2rem 3rem 4rem 2rem;
     font-size: 14px;
     color: #052c65;
+    display: flex;
+    align-items: center;
 
     img {
       margin-right: 1.6rem;

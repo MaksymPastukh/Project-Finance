@@ -1,18 +1,26 @@
 .side-bar {
-  max-width: 219px;
+  width: 22rem;
   min-height: 100vh;
   border-right: 1px solid #d9d9d9;
 
   .logo {
-    width: 100%;
-    padding: 40px 0 20px 20px;
+
+    padding: 4rem 7.1rem 2rem 5rem;
     border-bottom: 1px solid #d9d9d9;
+
+    a {
+      img {
+        width: 100%;
+      }
+    }
+
   }
 
   .navigation {
-    margin-top: 60px;
+    margin: 6rem 0 61rem 0;
     position: relative;
     display: inline-block;
+
 
     ul {
       list-style: none;
@@ -44,22 +52,22 @@
         }
 
 
-
         &:last-child {
           border-radius: 5px 5px 0 0;
         }
 
         a {
           display: flex;
-          max-width: 198px;
-          height: 40px;
-          padding: 10px 16px;
+          min-width: 17.8rem;
+          height: 4rem;
+          padding: 1rem 1.6rem;
           text-decoration: none;
           align-items: center;
           color: #052c65;
+          font-size: 14px;
 
           img {
-            margin-right: 10px;
+            margin-right: 1rem;
           }
         }
       }
@@ -69,12 +77,14 @@
           display: none;
           position: absolute;
           border: 1px solid #0d6efd;
-          border-radius:0 0 5px 5px;
-          min-width: 197.33px;
+          border-radius: 0 0 5px 5px;
           z-index: 1;
+
 
           a {
             color: #052c65;
+            min-width: 17.6rem;
+
 
             &:hover {
               background-color: #0d6efd;
@@ -94,31 +104,31 @@
       }
 
 
-
-
     }
   }
 
   .balance {
-    padding: 510px 0 20px 20px;
     width: 100%;
     color: #052c65;
+    padding: 0 0 2rem 2rem;
+    font-size: 14px;
 
     span {
       margin-left: 5px;
       color: #0d6efd;
+      font-size: 14px;
     }
   }
 
   .profile {
     width: 100%;
     border-top: 1px solid #d9d9d9;
-    padding: 20px 30px 40px 20px;
+    padding: 2rem 3rem 4rem 2rem;
     font-size: 14px;
     color: #052c65;
 
     img {
-      margin-right: 16px;
+      margin-right: 1.6rem;
     }
   }
 

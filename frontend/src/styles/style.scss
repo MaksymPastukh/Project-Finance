@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import "abstract/_mixin";
 @import "auth/_auth";
 @import "abstract/_button";
 @import "layout/_side-bar";
@@ -17,6 +18,43 @@
   font-weight: bold;
 }
 
+html {
+  font-size: 62.5%;
+  position: relative;
+
+  @include respond(Laptop-l) {
+    font-size: 60.25%;
+  }
+  @include respond(Laptop) {
+    font-size: 58.25%;
+  }
+
+  @include respond(Laptop-s) {
+    font-size: 57%;
+  }
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+
+  @include respond(tab-s) {
+    font-size: 45%;
+  }
+
+  @include respond(phone) {
+    font-size: 38%;
+  }
+}
+
 body {
   font-family: 'Roboto-Regular', sans-serif;
+}
+
+.layout {
+  display: flex;
+  max-width: 134.6rem;
 }

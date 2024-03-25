@@ -1,5 +1,6 @@
 .main-content {
-  padding: 100px 60px 133px 94px;
+  margin: 10rem 0 0 6rem;
+
   .main-title {
     font-size: 40px;
     color: #052c65;
@@ -8,81 +9,98 @@
 
   .tabs {
     width: 100%;
-    margin-top: 60px;
-    &__header {
+    margin-top: 6rem;
 
-      @media (max-width: 768px) {
-        flex-wrap: wrap;
-      }
-      &-item {
+    .tabs-header {
+
+      .tabs-header-item {
         padding: 7px 17.5px;
         cursor: pointer;
         border: 1px solid #6c757d;
         border-radius: 4px;
         color: #6c757d;
-        width: 100px;
-        height: 37px;
+        width: 10rem;
+        font-size: 16px;
+        height: 3.7rem;
+
         &.active {
           color: white;
           background: #6c757d;
         }
-
-
       }
 
-      &-interval {
+      .tabs-header-interval {
         color: #6c757d;
-       input:focus {
-         border: none;
+        font-size: 16px;
 
-       }
+
+        input:focus {
+          border: none;
+
+        }
+
         input::placeholder {
           text-decoration: underline;
         }
       }
     }
+
     .tabs-content {
-      margin-top: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 75px;
+      margin-top: 14rem;
+      font-size: 7.5rem;
+      position: relative;
 
-      .items {
-        min-width: 437px;
+      .hr {
+        position: absolute;
+        top: 6.7rem;
+        left: 54.1rem;
+        width: .1rem;
+        height: 45rem;
+        background: #d9d9d9;
+      }
 
-        .title {
-          font-size: 28px;
-          color: #290661;
-        }
+      .tabs-content-item {
 
-        .graph-item {
-          font-size: 12px;
-          color: #000000;
+        .items {
+          min-width: 43.7rem;
 
-          .block-color-graph {
-            width: 35px;
-            height: 10px;
+
+          .title {
+            font-size: 28px;
+            color: #290661;
           }
 
-          .red {
-            background: #dc3545;
-          }
+          .graph-item {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #000000;
 
-          .orange {
-            background: #fd7e14;
-          }
 
-          .yellow {
-            background: #ffc107;
-          }
+            .block-color-graph {
+              width: 3.5rem;
+              height: 10px;
+            }
 
-          .green {
-            background: #20c997;
-          }
+            .red {
+              background: #dc3545;
+            }
 
-          .blue {
-            background: #0d6efd;
+            .orange {
+              background: #fd7e14;
+            }
+
+            .yellow {
+              background: #ffc107;
+            }
+
+            .green {
+              background: #20c997;
+            }
+
+            .blue {
+              background: #0d6efd;
+            }
           }
         }
       }

@@ -1,0 +1,47 @@
+.revenues {
+  margin: 10rem 0 0 6rem;
+
+  .revenues-title {
+    line-height: normal;
+    font-size: 40px;
+    color: #052c65;
+  }
+
+  .revenues-items {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+
+
+    .revenues-item {
+      border: .1rem solid #ced4da;
+      border-radius: 1.2rem;
+      max-width: 35.7rem;
+      height: 12.1rem;
+      padding: 2rem 10rem 2rem 2rem;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+
+      .revenues-item-title {
+        font-size: 20px;
+        line-height: normal;
+        color: #290661;
+        margin-bottom: 1rem;
+      }
+
+      .button {
+        width: 13.4rem;
+        text-align: center;
+        font-size: 14px;
+
+        &:last-child {
+          width: 8.8rem;
+          background: #dc3545;
+          text-align: center;
+          font-size: 14px;
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+}

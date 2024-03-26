@@ -4,8 +4,11 @@
 @import "abstract/_mixin";
 @import "auth/_auth";
 @import "abstract/_button";
+@import "abstract/_popup";
 @import "layout/_side-bar";
 @import "layout/_home";
+@import "layout/_revenues";
+@import "layout/_outlay";
 
 @font-face {
   font-family: 'Roboto-Regular';
@@ -22,17 +25,17 @@ html {
   font-size: 62.5%;
   position: relative;
 
-  @include respond(Laptop-l) {
-    font-size: 60.25%;
-  }
-  @include respond(Laptop) {
-    font-size: 58.25%;
-  }
-
-  @include respond(Laptop-s) {
-    font-size: 57%;
-  }
-
+  //@include respond(Laptop-l) {
+  //  font-size: 60.25%;
+  //}
+  //@include respond(Laptop) {
+  //  font-size: 58.25%;
+  //}
+  //
+  //@include respond(Laptop-s) {
+  //  font-size: 57%;
+  //}
+  //
   @include respond(tab-land) {
     font-size: 56.25%;
   }
@@ -56,5 +59,4 @@ body {
 
 .layout {
   display: flex;
-  max-width: 134.6rem;
 }

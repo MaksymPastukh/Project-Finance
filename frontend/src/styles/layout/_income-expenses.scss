@@ -1,0 +1,193 @@
+.income-expenses {
+  margin: 10rem 0 0 6rem;
+
+  .income-expenses-title {
+    line-height: normal;
+    font-size: 40px;
+    color: #052c65;
+  }
+
+  .income-expenses-content {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+
+
+    .income-expenses-button {
+
+      .button {
+        width: 13.7rem;
+        text-align: center;
+        font-size: 14px;
+        font-family: 'Roboto-Regular', sans-serif;
+
+        &:last-child {
+          width: 13.7rem;
+          background: #dc3545;
+          text-align: center;
+          font-size: 14px;
+          margin-left: 1rem;
+          font-family: 'Roboto-Regular', sans-serif;
+        }
+      }
+    }
+
+    .tabs {
+      width: 100%;
+      margin-top: 6rem;
+
+      .tabs-header {
+        display: flex;
+        align-items: center;
+
+        .tabs-header-item {
+          padding: 7px 17.5px;
+          cursor: pointer;
+          border: 1px solid #6c757d;
+          margin-right: 20px;
+          border-radius: 4px;
+          color: #6c757d;
+          width: 10rem;
+          font-size: 16px;
+          height: 3.7rem;
+
+          &.active {
+            color: white;
+            background: #6c757d;
+          }
+        }
+
+        .tabs-header-interval {
+          color: #6c757d;
+          font-size: 16px;
+
+          .input-interval {
+            width: 6.3rem;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          span {
+            margin-right: .9rem;
+          }
+
+          input:focus {
+            border: none;
+
+          }
+
+          input::placeholder {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .tabs-content {
+        margin-top: 4rem;
+
+
+        .tabs-content-item {
+          font-size: 16px;
+
+          table {
+            min-width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+
+            tr {
+              background: white;
+              border-bottom: 1px solid #dee2e6;
+
+              &:first-child {
+                border-top: 1px solid #dee2e6;
+              }
+            }
+
+            thead {
+
+              tr, th {
+                padding: 1.3rem;
+                text-align: center;
+                letter-spacing: 0.08em;
+                color: #052c65;
+
+                &:first-child {
+                  text-align: start;
+                  width: 15rem;
+                  padding-left: 1.5rem;
+                }
+
+
+              }
+            }
+
+            tbody {
+              tr, td {
+                text-align: center;
+                padding: 1.3rem;
+
+                .number-operation {
+                  color: #000;
+                }
+
+                &:first-child .type {
+                  color: #198754;
+                }
+
+                &:last-child .type {
+                  color: #dc3545;
+                }
+
+                .button-svg {
+                  text-align: end;
+
+                  button {
+                    margin-right: 1rem;
+                  }
+                }
+
+                &:last-child {
+                  padding-right: 0;
+                }
+              }
+            }
+
+          }
+
+          /* Simple CSS for flexbox table on mobile */
+          @media (max-width: 800px) {
+            table {
+              thead {
+                left: -9999px;
+                position: absolute;
+                visibility: hidden;
+              }
+
+              tr {
+                border-bottom: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-bottom: 40px;
+              }
+
+              td {
+                border: 1px solid;
+                margin: 0 -1px -1px 0;
+                padding-top: 35px;
+                position: relative;
+                width: 50%;
+
+                span {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

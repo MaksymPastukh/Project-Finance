@@ -1,10 +1,11 @@
 .form {
   padding: 31.3rem 0 31.3rem 0;
 
+  &.sign {
+    padding: 28.1rem 0 28.1rem 0;
+  }
+
   .auth-content {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     margin: 0 auto;
     max-width: 40rem;
 
@@ -46,7 +47,6 @@
             font-size: 15px;
             color: #6c757d;
           }
-
         }
 
         label {
@@ -58,8 +58,6 @@
         .error-input {
           border: .1rem solid red;
         }
-
-
       }
 
       .form-agree {
@@ -88,8 +86,6 @@
           color: #000;
         }
       }
-
-
     }
 
     .form-link-signup {
@@ -102,21 +98,13 @@
         text-decoration: underline;
         text-decoration-skip-ink: none;
         color: #0d6efd;
-
       }
     }
 
     .form-button {
       margin-top: 2rem;
     }
-
-    .disabled-button:disabled {
-      background-color: #ccc;
-      color: #fff;
-      cursor: not-allowed;
-    }
   }
-
 }
 
 

@@ -24,3 +24,9 @@
   max-width: 35.7rem;
   height: 12.1rem;
 }
+
+.button:disabled {
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}

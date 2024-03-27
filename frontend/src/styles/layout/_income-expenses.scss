@@ -11,6 +11,51 @@
     margin-top: 4rem;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+
+    input {
+      width: 397px;
+      height: 38px;
+      padding: .7rem 1.6rem;
+      font-size: 15px;
+      color: #6c757d;
+      border: .1rem solid #d9d9d9;
+      border-radius: .5rem;
+      margin-bottom: 1rem;
+
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
+        color: #6c757d;
+      }
+
+    }
+
+
+    .page-create-editing {
+      margin-top: 1rem;
+
+      button {
+        width: 8.8rem;
+        text-align: center;
+        font-size: 14px;
+        font-family: 'Roboto-Regular', sans-serif;
+        background: #198754;
+
+        &:last-child {
+          width: 8.3rem;
+          background: #dc3545;
+          text-align: center;
+          font-size: 14px;
+          margin-left: 1rem;
+          font-family: 'Roboto-Regular', sans-serif;
+        }
+      }
+    }
 
 
     .income-expenses-button {

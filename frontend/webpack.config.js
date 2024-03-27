@@ -17,7 +17,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/templates/signup.html"
+      template: "./src/templates/login.html"
     }),
     new CopyPlugin({
       patterns: [

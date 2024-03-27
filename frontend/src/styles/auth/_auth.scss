@@ -1,100 +1,122 @@
-
 .form {
-  padding: 313px 0 313px 0;
+  padding: 31.3rem 0 31.3rem 0;
 
-  .container {
-    .auth-content {
-      max-width: 400px;
+  .auth-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 40rem;
 
-      .auth-title {
-        margin-top: 60px;
-        font: 500 40px "Roboto-Medium", sans-serif;
-        text-align: center;
-        color: #052c65;
-      }
+    .logo {
+      display: flex;
+      justify-content: center;
+    }
 
-      .auth-form-details {
-        margin-top: 20px;
-        max-width: 397px;
+    .auth-title {
+      margin-top: 6rem;
+      font-family: Roboto-Medium, sans-serif;
+      font-size: 4rem;
+      text-align: center;
+      color: #052c65;
+    }
 
-        .form-group {
+    .auth-form-details {
+      margin-top: 2rem;
+      min-width: 39.7rem;
 
-          margin-top: 10px;
+      .form-group {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row-reverse;
 
-          .form-input {
-            border: 1px solid #e9ecef;
-            border-radius: 0 4px 4px 0;
-            border-left: 0;
-            outline: 0;
-            width: 100%;
-            height: 38.66px;
-            padding: 7px 0 7px 13px;
+        .form-input {
+          border: .1rem solid #e9ecef;
+          border-radius: 0 .4rem .4rem 0;
+          border-left: 0;
+          outline: 0;
+          width: 100%;
+          height: 3.866rem;
+          padding: .7rem 0 .7rem 1.3rem;
+          color: #6c757d;
+          font-size: 18px;
+          line-height: 22px;
+
+          &::placeholder {
+            font-size: 15px;
             color: #6c757d;
-            font-size: 18px;
-            line-height: 22px;
-
-            &::placeholder {
-              font-size: 15px;
-              color: #6c757d;
-            }
-
           }
 
-          label {
-            img {
-              width: 43px;
-            }
+        }
+
+        label {
+          img {
+            width: 4.3rem;
           }
         }
 
-        .form-agree {
-          margin-top: 12px;
-
-          input {
-            position: relative;
-            top: 2px;
-            cursor: pointer;
-          }
-
-          input[type="radio"],
-          input[type="checkbox"] {
-            appearance: auto;
-            background: #fff;
-            border: 1px solid #dee2e6;
-            border-radius: 2px;
-            width: 13px;
-            height: 13px;
-            position: relative;
-          }
-
-          label {
-            font-size: 12px;
-            line-height: 14px;
-            color: #000;
-          }
+        .error-input {
+          border: .1rem solid red;
         }
+
 
       }
 
-      .form-link-signup {
-        margin-top: 10px;
-        font-size: 12px;
+      .form-agree {
+        margin-top: 1.2rem;
 
-        a {
-          margin-left: 10px;
+        input {
+          position: relative;
+          top: .2rem;
+          cursor: pointer;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+          appearance: auto;
+          background: #fff;
+          border: .1rem solid #dee2e6;
+          border-radius: .2rem;
+          width: 1.3rem;
+          height: 1.3rem;
+          position: relative;
+        }
+
+        label {
           font-size: 12px;
-          text-decoration: underline;
-          text-decoration-skip-ink: none;
-          color: #0d6efd;
-
+          line-height: 14px;
+          color: #000;
         }
       }
 
-      .form-button {
-        margin-top: 20px;
+
+    }
+
+    .form-link-signup {
+      margin-top: 1rem;
+      font-size: 12px;
+
+      a {
+        margin-left: 1rem;
+        font-size: 12px;
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        color: #0d6efd;
+
       }
     }
+
+    .form-button {
+      margin-top: 2rem;
+    }
+
+    .disabled-button:disabled {
+      background-color: #ccc;
+      color: #fff;
+      cursor: not-allowed;
+    }
   }
+
 }
 
 

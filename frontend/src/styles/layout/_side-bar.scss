@@ -9,6 +9,10 @@
   flex-direction: column;
   align-items: center;
 
+  @include respond(Laptop-s) {
+    width: 34rem;
+  }
+
   @include respond(tab-port) {
     display: none;
   }
@@ -22,7 +26,7 @@
         max-width: 100%;
 
         @include respond(Laptop-s) {
-          max-width: 120%;
+          max-width: 126%;
         }
       }
     }
@@ -33,11 +37,11 @@
     position: relative;
     display: inline-block;
     @include respond(tab-land) {
-      margin-bottom: 112rem;
+      margin-bottom: 114rem;
     }
 
     @include respond(tab-port-s) {
-      margin-bottom: 114rem;
+      margin-bottom: 118rem;
     }
 
     ul {

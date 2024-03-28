@@ -9,7 +9,7 @@
   }
 
   @include respond(phone) {
-    margin: 10rem 0;
+    margin: 10rem 1rem;
   }
 
 
@@ -31,6 +31,7 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+
       .tabs-header-item {
         width: 10rem;
         padding: .7rem 1.7rem;
@@ -43,9 +44,14 @@
         font-size: 1.6rem;
         height: 3.7rem;
 
+        @include respond(tab-land) {
+
+        }
+
+
         @include respond(tab-port-s) {
           padding: .3rem 1.7rem;
-         font-size: 16px;
+          font-size: 16px;
           margin-bottom: .8rem;
 
           &:nth-child(6) {
@@ -54,10 +60,10 @@
         }
 
         @include respond(phone) {
+          width: 12rem;
           height: 4rem;
           margin-bottom: 1.2rem;
         }
-
 
 
         &.active {
@@ -69,6 +75,12 @@
       .tabs-header-interval {
         color: #6c757d;
         font-size: 16px;
+
+        @include respond(tab-land) {
+          margin-left: 2rem;
+          margin-top: .5rem;
+        }
+
 
         @include respond(tab-port-s) {
           margin-bottom: .8rem;
@@ -109,6 +121,7 @@
         margin-top: 7rem;
 
       }
+
       .hr {
         position: absolute;
         top: 6.7rem;
@@ -147,7 +160,6 @@
         }
 
         .items {
-          max-width: 43.7rem;
           @include respond(tab-land) {
             margin: 0;
 
@@ -161,6 +173,7 @@
               border-top: 1px solid #d9d9d9;
             }
           }
+
           .title {
             font-size: 28px;
             color: #290661;
@@ -168,6 +181,12 @@
 
           .graph-item {
             display: flex;
+
+            @include respond(phone) {
+              flex-wrap: wrap;
+              justify-content: center;
+
+            }
 
 
             .graph-items {
@@ -213,10 +232,7 @@
 
           .graph {
             margin-top: 4rem;
-            @include respond(phone) {
-              flex-wrap: wrap;
 
-            }
 
             svg {
               @include respond(phone) {

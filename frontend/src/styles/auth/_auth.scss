@@ -9,11 +9,6 @@
     margin: 0 auto;
     max-width: 40rem;
 
-    .logo {
-      display: flex;
-      justify-content: center;
-    }
-
     .auth-title {
       margin-top: 6rem;
       font-family: Roboto-Medium, sans-serif;
@@ -28,8 +23,6 @@
 
       .form-group {
         margin-top: 1rem;
-        display: flex;
-        flex-direction: row-reverse;
 
         .form-input {
           border: .1rem solid #e9ecef;

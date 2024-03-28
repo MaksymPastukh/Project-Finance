@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles/output.scss">
 </head>
 <body>
-<div class="layout container">
+<div class="layout">
   <section class="side-bar">
     <div class="logo">
       <a href="#"><img src="images/logo.png" alt="Logo"></a>
@@ -76,13 +76,13 @@
       Maksym Pastukh
     </div>
   </section>
-  <section class="main container">
+  <section class="main">
     <div class="main-content">
       <div class="main-title">
         <h1>Home</h1>
       </div>
       <div class="tabs">
-        <div class="tabs-header">
+        <div class="tabs-header flex items-center flex-wrap">
           <div class="tabs-header-item active">Today</div>
           <div class="tabs-header-item">Week</div>
           <div class="tabs-header-item">Month</div>
@@ -97,8 +97,8 @@
           </div>
         </div>
         <div class="tabs-content">
-          <div class="tabs-content-item">
-            <div class="item-revenues items">
+          <div class="tabs-content-item flex justify-between">
+            <div class="flex flex-col items-center item-revenues items">
               <div class="title text-center">
                 Revenues
               </div>
@@ -144,7 +144,7 @@
               </div>
             </div>
             <div class="hr"></div>
-            <div class="item-outlay items">
+            <div class="flex flex-col items-center item-outlay items">
               <div class="title text-center">
                 Outlay
               </div>

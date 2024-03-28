@@ -1,5 +1,17 @@
+@import "../abstract/_mixin";
+
+
 .main-content {
   margin: 10rem 0 0 6rem;
+
+  @include respond(tab-port-s) {
+    margin: 10rem 2rem 0 2rem;
+  }
+
+  @include respond(phone) {
+    margin: 10rem 0;
+  }
+
 
   .main-title {
     font-size: 40px;
@@ -10,20 +22,43 @@
     width: 100%;
     margin-top: 6rem;
 
-    .tabs-header {
-      display: flex;
-      align-items: center;
 
+    .tabs-header {
+      @include respond(tab-land) {
+      }
+
+      @include respond(tab-port-s) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
       .tabs-header-item {
-        padding: 7px 17.5px;
+        width: 10rem;
+        padding: .7rem 1.7rem;
         cursor: pointer;
         border: 1px solid #6c757d;
         margin-right: 20px;
         border-radius: 4px;
         color: #6c757d;
-        width: 10rem;
-        font-size: 16px;
+        text-align: center;
+        font-size: 1.6rem;
         height: 3.7rem;
+
+        @include respond(tab-port-s) {
+          padding: .3rem 1.7rem;
+         font-size: 16px;
+          margin-bottom: .8rem;
+
+          &:nth-child(6) {
+
+          }
+        }
+
+        @include respond(phone) {
+          height: 4rem;
+          margin-bottom: 1.2rem;
+        }
+
+
 
         &.active {
           color: white;
@@ -34,6 +69,14 @@
       .tabs-header-interval {
         color: #6c757d;
         font-size: 16px;
+
+        @include respond(tab-port-s) {
+          margin-bottom: .8rem;
+        }
+
+        @include respond(phone) {
+          margin-bottom: 1.2rem;
+        }
 
         .input-interval {
           width: 6.3rem;
@@ -62,7 +105,10 @@
       margin-top: 14rem;
       font-size: 7.5rem;
       position: relative;
+      @include respond(tab-land) {
+        margin-top: 7rem;
 
+      }
       .hr {
         position: absolute;
         top: 6.7rem;
@@ -70,24 +116,51 @@
         width: .1rem;
         height: 45rem;
         background: #d9d9d9;
+
+        @include respond(Laptop-s) {
+          height: 50rem;
+          left: 48.4rem;
+        }
+
+        @include respond(tab-land) {
+          display: none;
+        }
+
       }
 
       .tabs-content-item {
-        display: flex;
-        max-width: 104.3rem;
-        justify-content: space-between;
+        min-width: 104rem;
+
+        @include respond(tab-land) {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        @include respond(Laptop-s) {
+          min-width: 0;
+        }
 
         .item-revenues {
           margin-left: 2.4rem;
+
+
         }
 
         .items {
-          min-width: 43.7rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+          max-width: 43.7rem;
+          @include respond(tab-land) {
+            margin: 0;
 
+            &:first-child {
+              margin-bottom: 5rem;
+            }
 
+            &:last-child {
+              padding-top: 4rem;
+              margin-bottom: 4rem;
+              border-top: 1px solid #d9d9d9;
+            }
+          }
           .title {
             font-size: 28px;
             color: #290661;
@@ -140,6 +213,19 @@
 
           .graph {
             margin-top: 4rem;
+            @include respond(phone) {
+              flex-wrap: wrap;
+
+            }
+
+            svg {
+              @include respond(phone) {
+                max-width: 100%;
+
+              }
+            }
+
+
           }
         }
       }

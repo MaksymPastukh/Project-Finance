@@ -1,3 +1,5 @@
+@import "../abstract/_mixin";
+
 .side-bar {
   max-width: 23rem;
   min-height: 100vh;
@@ -7,6 +9,10 @@
   flex-direction: column;
   align-items: center;
 
+  @include respond(tab-port) {
+    display: none;
+  }
+
   .logo {
     padding: 4rem 7.1rem 2rem 5rem;
     border-bottom: 1px solid #d9d9d9;
@@ -14,6 +20,10 @@
     a {
       img {
         max-width: 100%;
+
+        @include respond(Laptop-s) {
+          max-width: 120%;
+        }
       }
     }
   }
@@ -22,7 +32,13 @@
     margin: 6rem 0 61rem 0;
     position: relative;
     display: inline-block;
+    @include respond(tab-land) {
+      margin-bottom: 112rem;
+    }
 
+    @include respond(tab-port-s) {
+      margin-bottom: 114rem;
+    }
 
     ul {
       list-style: none;

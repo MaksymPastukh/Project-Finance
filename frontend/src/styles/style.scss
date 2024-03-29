@@ -2,6 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import "abstract/_mixin";
+@import "abstract/_toggle";
 @import "auth/_auth";
 @import "abstract/_button";
 @import "abstract/_popup";
@@ -49,9 +50,9 @@ html {
     font-size: 52%;
   }
 
-  @include respond(tab-s) {
-    font-size: 49%;
-  }
+  //@include respond(tab-s) {
+  //  font-size: 49%;
+  //}
 
   @include respond(phone) {
     font-size: 44%;
@@ -60,8 +61,13 @@ html {
 
 body {
   font-family: 'Roboto-Regular', sans-serif;
+  overflow-x: hidden;
 }
 
 .layout {
   display: flex;
+
+  @include respond(tab-port) {
+    flex-direction: column
+  }
 }

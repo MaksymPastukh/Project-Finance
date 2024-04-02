@@ -1,3 +1,6 @@
+@import "../abstract/_mixin";
+
+
 .button {
   border-radius: .5rem;
   padding: .6rem;
@@ -23,6 +26,10 @@
   border-radius: 1.2rem;
   max-width: 35.7rem;
   height: 12.1rem;
+
+  @include respond(tab-port) {
+    height: 14.1rem;
+  }
 }
 
 .button:disabled {

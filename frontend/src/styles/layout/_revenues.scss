@@ -1,10 +1,20 @@
+@import "../abstract/_mixin";
+
 .revenues {
   margin: 10rem 0 0 6rem;
+
+  @include respond(tab-port) {
+    margin: 6rem 2rem;
+  }
 
   .revenues-title {
     line-height: normal;
     font-size: 40px;
     color: #052c65;
+
+    @include respond(tab-port) {
+      font-size: 30px;
+    }
   }
 
   .revenues-items {
@@ -22,11 +32,20 @@
       margin-right: 2rem;
       margin-bottom: 2rem;
 
+      @include respond(tab-port) {
+        height: 14.1rem;
+      }
+
       .revenues-item-title {
         font-size: 28px;
         line-height: normal;
         color: #290661;
         margin-bottom: 1rem;
+
+        @include respond(tab-port) {
+          margin-bottom: 2rem;
+          font-size: 24px;
+        }
       }
 
       .button {
@@ -45,6 +64,12 @@
         }
       }
     }
+
+    .revenues-create {
+      @include respond(tab-port) {
+        height: 14.1rem;
+      }
+    }
   }
 
   .editing-create-content {
@@ -54,7 +79,7 @@
     flex-direction: column;
 
     input {
-      width: 397px;
+      width: 39.7rem;
       height: 38px;
       padding: .7rem 1.6rem;
       font-size: 15px;
@@ -83,6 +108,12 @@
         font-family: 'Roboto-Regular', sans-serif;
         color: #fff;
 
+
+        @include respond(phone) {
+          width: 10rem;
+          height: 4.8rem;
+        }
+
         &:last-child {
           width: 8.3rem;
           background: #dc3545;
@@ -91,6 +122,11 @@
           color: #fff;
           font-family: 'Roboto-Regular', sans-serif;
           margin-left: 1rem;
+
+          @include respond(phone) {
+            width: 10rem;
+            height: 4.8rem;
+          }
         }
       }
     }

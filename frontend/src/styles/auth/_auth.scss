@@ -1,13 +1,25 @@
+@import "../abstract/_mixin";
+
 .form {
   padding: 31.3rem 0 31.3rem 0;
 
+  @include respond(tab-port) {
+    padding: 10rem 2rem;
+  }
+
   &.sign {
     padding: 28.1rem 0 28.1rem 0;
+
+    @include respond(tab-port) {
+      padding: 10rem 2rem;
+    }
   }
 
   .auth-content {
     margin: 0 auto;
     max-width: 40rem;
+
+
 
     .auth-title {
       margin-top: 6rem;
@@ -35,6 +47,11 @@
           color: #6c757d;
           font-size: 18px;
           line-height: 22px;
+
+          @include respond(phone) {
+            padding: 1rem 0 .7rem 1.3rem;
+            font-size: 14px;
+          }
 
           &::placeholder {
             font-size: 15px;
@@ -68,8 +85,8 @@
           background: #fff;
           border: .1rem solid #dee2e6;
           border-radius: .2rem;
-          width: 1.3rem;
-          height: 1.3rem;
+          width: 13px;
+          height: 13px;
           position: relative;
         }
 
@@ -77,6 +94,7 @@
           font-size: 12px;
           line-height: 14px;
           color: #000;
+          margin-left: 1rem;
         }
       }
     }
@@ -85,12 +103,20 @@
       margin-top: 1rem;
       font-size: 12px;
 
+      @include respond(phone) {
+        margin-top: 2rem;
+        font-size: 14px;
+      }
       a {
         margin-left: 1rem;
         font-size: 12px;
         text-decoration: underline;
         text-decoration-skip-ink: none;
         color: #0d6efd;
+
+        @include respond(phone) {
+          font-size: 14px;
+        }
       }
     }
 

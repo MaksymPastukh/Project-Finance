@@ -87,13 +87,16 @@
 
     .income-expenses-button {
 
-      .button {
-        width: 15.7rem;
-        text-align: center;
-        font-size: 14px;
-        font-family: 'Roboto-Regular', sans-serif;
+      a {
+        .income {
+          width: 15.7rem;
+          text-align: center;
+          font-size: 14px;
+          background: #0d6efd;
+          font-family: 'Roboto-Regular', sans-serif;
+        }
 
-        &:last-child {
+        .expenses {
           width: 15.7rem;
           background: #dc3545;
           text-align: center;
@@ -102,6 +105,8 @@
           font-family: 'Roboto-Regular', sans-serif;
         }
       }
+
+
     }
 
     .tabs {

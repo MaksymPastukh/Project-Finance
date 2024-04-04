@@ -1,13 +1,13 @@
 @import "../abstract/_mixin";
 
-.outlay {
+.income {
   margin: 10rem 0 0 6rem;
 
   @include respond(tab-port) {
     margin: 6rem 2rem;
   }
 
-  .outlay-title {
+  .income-title {
     line-height: normal;
     font-size: 40px;
     color: #052c65;
@@ -17,16 +17,16 @@
     }
   }
 
-  .outlay-items {
+  .income-items {
     margin-top: 4rem;
     display: flex;
     flex-wrap: wrap;
 
 
-    .outlay-item {
+    .income-item {
       border: .1rem solid #ced4da;
       border-radius: 1.2rem;
-      width: 35.3rem;
+      max-width: 35.3rem;
       height: 12.1rem;
       padding: 2rem 9.5rem 2rem 2rem;
       margin-right: 2rem;
@@ -36,7 +36,7 @@
         height: 14.1rem;
       }
 
-      .outlay-item-title {
+      .income-item-title {
         font-size: 28px;
         line-height: normal;
         color: #290661;
@@ -65,7 +65,7 @@
       }
     }
 
-    .revenues-create {
+    .income-create {
       @include respond(tab-port) {
         height: 14.1rem;
       }
@@ -84,7 +84,7 @@
       padding: .7rem 1.6rem;
       font-size: 15px;
       color: #6c757d;
-      border: .1rem solid #d9d9d9;
+      border: .1rem solid #6c757d;
       border-radius: .5rem;
 
       &:focus {
@@ -107,6 +107,7 @@
         text-align: center;
         font-family: 'Roboto-Regular', sans-serif;
         color: #fff;
+
 
         @include respond(phone) {
           width: 10rem;

@@ -26,7 +26,7 @@
     .income-item {
       border: .1rem solid #ced4da;
       border-radius: 1.2rem;
-      max-width: 35.3rem;
+      width: 35.2rem;
       height: 12.1rem;
       padding: 2rem 9.5rem 2rem 2rem;
       margin-right: 2rem;
@@ -48,21 +48,26 @@
         }
       }
 
-      .button {
-        width: 13.4rem;
-        text-align: center;
-        font-size: 14px;
-        font-family: 'Roboto-Regular', sans-serif;
 
-        &:last-child {
-          width: 8.8rem;
-          background: #dc3545;
+      a {
+        .button {
+          width: 12.8rem;
+          background: #0d6efd;
           text-align: center;
-          font-size: 14px;
-          margin-left: 1rem;
+          margin-left: 0;
           font-family: 'Roboto-Regular', sans-serif;
         }
       }
+
+      .button {
+        width: 8.8rem;
+        background: #dc3545;
+        text-align: center;
+        margin-left: 1rem;
+        font-family: 'Roboto-Regular', sans-serif;
+      }
+
+
     }
 
     .income-create {

@@ -32,15 +32,15 @@ export class Router {
       load: () => {
       }
     }, {
-      route: '#/income-create',
-      title: 'income-Expenses-Create',
+      route: '#/income-expenses-create',
+      title: 'Income-Expenses-Create',
       template: 'templates/income-expenses-create.html',
       styles: this.styles,
       load: () => {
       }
     }, {
-      route: '#/expenses-edit',
-      title: 'income-Expenses-Edit',
+      route: '#/income-expenses-edit',
+      title: 'Income-Expenses-Edit',
       template: 'templates/income-expenses-editing.html',
       styles: this.styles,
       load: () => {
@@ -54,7 +54,7 @@ export class Router {
       }
     }, {
       route: '#/expense-create',
-      title: 'expense create',
+      title: 'Expense create',
       template: 'templates/expense-create-category.html',
       styles: this.styles,
       load: () => {
@@ -74,8 +74,8 @@ export class Router {
       load: () => {
       }
     }, {
-      route: '#/income-create1',
-      title: 'Income create1',
+      route: '#/income-create',
+      title: 'Income create',
       template: 'templates/income-create-category.html',
       styles: this.styles,
       load: () => {
@@ -91,7 +91,7 @@ export class Router {
     ]
   }
 
-  async startRouter(){
+  async startRouter() {
     const urlRoute = window.location.hash.split("?")[0]
 
 
@@ -99,13 +99,13 @@ export class Router {
       this.routes.find(item => item.route === urlRoute)
 
 
-    if(!newRoute) {
+    if (!newRoute) {
       window.location.href = '#/'
       return
     }
 
     this.contentElement.innerHTML = await fetch(newRoute.template)
-      .then(response =>  response.text())
+      .then(response => response.text())
     newRoute.load()
   }
 

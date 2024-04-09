@@ -1,6 +1,10 @@
+import {Form} from "./components/form.js";
+
 export class Router {
   constructor() {
     this.contentElement = document.getElementById("content")
+    this.contentAuth = document.getElementById('auth')
+    this.contentLayout = document.getElementById('layout')
     this.styles = 'styles/output.scss';
 
     this.routes = [{
@@ -23,6 +27,7 @@ export class Router {
       template: 'templates/signup.html',
       styles: this.styles,
       load: () => {
+        new Form('signup')
       }
     }, {
       route: '#/income-expenses',
@@ -98,10 +103,19 @@ export class Router {
     const newRoute =
       this.routes.find(item => item.route === urlRoute)
 
+    console.log(newRoute)
+
 
     if (!newRoute) {
       window.location.href = '#/'
       return
+    }
+
+    if (newRoute.route === '#/signup') {
+      this.contentLayout.style.display = 'none'
+      this.contentAuth.innerHTML = await fetch(newRoute.template)
+        .then(response => response.text())
+      newRoute.load()
     }
 
     this.contentElement.innerHTML = await fetch(newRoute.template)

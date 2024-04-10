@@ -16,6 +16,11 @@ export class Signup {
 
   // Vfrcbv123q1@
 
+  // Проблема в повторном вызове метода  validateForm(), метод вызывается и когда по наново начинает проверять
+  // на валидацию инпуты, то выбивает ошибку
+  // ERROR
+  // Cannot read properties of undefined (reading 'add')
+
   validateForm() {
     let isValid = true
 

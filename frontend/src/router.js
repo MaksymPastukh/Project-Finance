@@ -1,4 +1,4 @@
-import {Signup} from "./components/signup.js";
+import {Signup} from "./components/sign-up.js";
 import {Login} from "./components/login.js";
 
 export class Router {

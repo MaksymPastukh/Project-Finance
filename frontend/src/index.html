@@ -7,17 +7,18 @@
   <link rel="stylesheet" href="styles/output.scss">
 </head>
 <body>
-<div class="layout">
+<div id="auth"></div>
+<div class="layout" id="layout">
   <section class="side-bar">
     <div class="logo">
-      <a href="#"><img src="images/logo.png" alt="Logo"></a>
+      <a href="/#/"><img src="images/logo.png" alt="Logo"></a>
     </div>
 
     <div class="flex flex-wrap items-center justify-center test">
       <div class="navigation">
         <ul>
           <li class="navigation-item active">
-            <a href="#">
+            <a href="/#/signup">
               <svg width="15" height="14" viewBox="0 0 15 14" fill="none" class="mr-2.5"
                    xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -34,7 +35,7 @@
             </a>
           </li>
           <li class="navigation-item">
-            <a href="#">
+            <a href="/#/income-expenses">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="mr-2.5"
                    xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -54,7 +55,7 @@
             </a>
           </li>
           <li class="navigation-item selector">
-            <a href="#">
+            <div class="toggle">
               <svg width="7" height="14" viewBox="0 0 7 14" class="rotate"
                    xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -62,10 +63,10 @@
                       fill="#052C65"/>
               </svg>
               <span class="button-name">Category</span>
-            </a>
+            </div>
             <div class="select">
-              <a href="#">Revenues</a>
-              <a href="#">Outlay</a>
+              <a href="/#/income-category">Income</a>
+              <a href="/#/expense-category">Expense</a>
             </div>
           </li>
         </ul>
@@ -81,6 +82,8 @@
       </div>
     </div>
   </section>
+
+  <div id="content"></div>
 
   <div class="popup hide">
     <div class="popup-content">

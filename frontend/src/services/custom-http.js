@@ -1,3 +1,5 @@
+import {Auth} from "./auth.js";
+
 export class CustomHttp {
   static async request(url, method = "GET", body = null) {
     const params = {
@@ -16,7 +18,7 @@ export class CustomHttp {
 
     if (response.status < 200 || response.status >= 300) {
       if (response.status === 401) {
-        let result
+        let result = await Auth.processUnauthorizedResponse()
 
         if (result) {
           return await this.request(url, method, body)

@@ -1,4 +1,5 @@
-import {Form} from "./components/form.js";
+import {Signup} from "./components/signup.js";
+import {Login} from "./components/login.js";
 
 export class Router {
   constructor() {
@@ -20,6 +21,7 @@ export class Router {
       template: 'templates/login.html',
       styles: this.styles,
       load: () => {
+        new Login()
       }
     }, {
       route: '#/signup',
@@ -27,7 +29,7 @@ export class Router {
       template: 'templates/signup.html',
       styles: this.styles,
       load: () => {
-        new Form('signup')
+        new Signup('signup')
       }
     }, {
       route: '#/income-expenses',
@@ -103,7 +105,6 @@ export class Router {
     const newRoute =
       this.routes.find(item => item.route === urlRoute)
 
-    console.log(newRoute)
 
 
     if (!newRoute) {
@@ -111,16 +112,15 @@ export class Router {
       return
     }
 
-    if (newRoute.route === '#/signup') {
+    if (newRoute.route === '#/signup' || newRoute.route === '#/login') {
       this.contentLayout.style.display = 'none'
       this.contentAuth.innerHTML = await fetch(newRoute.template)
         .then(response => response.text())
       newRoute.load()
+    } else {
+      this.contentElement.innerHTML = await fetch(newRoute.template)
+        .then(response => response.text())
+      newRoute.load()
     }
-
-    this.contentElement.innerHTML = await fetch(newRoute.template)
-      .then(response => response.text())
-    newRoute.load()
   }
-
 }

@@ -6,17 +6,13 @@ export class Login {
 
     this.emailElement = document.getElementById('email')
     this.passwordElement = document.getElementById('password')
+    this.checkBoxElement = document.getElementById('checked')
+    this.processElement = document.getElementById("logIn")
 
-    // Vfrcbv123q1@
-
-    this.processElement = document.getElementById("login")
     this.processElement.addEventListener('click', this.processForm.bind(this))
-
   }
 
-  // Vfrcbv123q1@
-
-  validateForm() {
+  validateLogin() {
     let isValid = true
 
     if (this.emailElement.value && this.emailElement.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
@@ -33,12 +29,16 @@ export class Login {
       isValid = false;
     }
 
+    if(!this.checkBoxElement.checked) {
+      this.checkBoxElement.nextElementSibling.style.color = 'red'
+      isValid = false;
+    }
 
     return isValid
   }
 
   async processForm() {
-    if (this.validateForm()) {
+    if (this.validateLogin()) {
       const email = this.emailElement.value
       const password = this.passwordElement.value
 
@@ -51,11 +51,12 @@ export class Login {
 
         // Если прошло успешно
         if (result) {
-          if (result.error || !result.accessToken || !result.refreshToken || !result.fullName || !result.userId) {
+          console.log(result)
+          if (result.error || !result.tokens.accessToken || !result.tokens.refreshToken || !result.user.name || !result.user.lastName || !result.user.id) {
             throw new Error(result.message)
           }
 
-          location.href = "#/"
+          location.hash = "#/"
         }
       } catch (error) {
         console.log(error)

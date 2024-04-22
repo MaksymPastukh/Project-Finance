@@ -1,5 +1,6 @@
 import {Signup} from "./components/sign-up.js";
 import {Login} from "./components/login.js";
+import {Home} from "./components/home.js";
 
 export class Router {
   constructor() {
@@ -14,6 +15,7 @@ export class Router {
       template: 'templates/main.html',
       styles: this.styles,
       load: () => {
+        new Home()
       }
     }, {
       route: '#/login',
@@ -29,7 +31,7 @@ export class Router {
       template: 'templates/signup.html',
       styles: this.styles,
       load: () => {
-        new Signup('signup')
+        new Signup()
       }
     }, {
       route: '#/income-expenses',
@@ -106,12 +108,6 @@ export class Router {
       this.routes.find(item => item.route === urlRoute)
 
 
-
-    if (!newRoute) {
-      window.location.href = '#/'
-      return
-    }
-
     if (newRoute.route === '#/signup' || newRoute.route === '#/login') {
       this.contentLayout.style.display = 'none'
       this.contentAuth.innerHTML = await fetch(newRoute.template)
@@ -122,5 +118,8 @@ export class Router {
         .then(response => response.text())
       newRoute.load()
     }
+
+
+
   }
 }

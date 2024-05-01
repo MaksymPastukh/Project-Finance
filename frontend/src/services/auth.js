@@ -1,4 +1,4 @@
-import config from "../config/config";
+import config from "../config/config.js";
 
 export class Auth {
   static accessToken = 'accessTokenKey'
@@ -17,12 +17,11 @@ export class Auth {
         },
         body: JSON.stringify({refreshToken: refreshToken})
       })
-
       if(response && response.status === 200) {
         const result = await response.json()
 
         if(result && !result.error) {
-          this.setTokens(result.accessToken, result.refreshToken)
+          this.setTokens(result.tokens.accessToken, result.tokens.refreshToken)
           return true
         }
       }
@@ -34,34 +33,29 @@ export class Auth {
   }
 
   // Метод записи токенов
-
   static setTokens(access, refresh) {
     localStorage.setItem(this.accessToken, access)
     localStorage.setItem(this.refreshToken, refresh)
   }
 
   // Метод удаления токенов
-
   static removeTokens () {
     localStorage.removeItem(this.accessToken)
     localStorage.removeItem(this.refreshToken)
   }
 
   // Метод записи информации о пользователе
-
   static setUserInfo(userInfo) {
     localStorage.setItem(this.userInfo, JSON.stringify(userInfo))
   }
 
   // Метод получения информации о пользователе
-
   static getUserInfo()  {
     let userInfo = localStorage.getItem(this.userInfo)
 
     if(userInfo) {
       return JSON.parse(userInfo)
     }
-
     return  null
   }
 }

@@ -1,15 +1,23 @@
 import {CustomHttp} from "../services/custom-http.js";
-import config from "../config/config";
+import config from "../config/config.js";
+import {Auth} from "../services/auth.js";
+import {Popup} from "./popup.js";
 
-export class Login {
+export class Login extends Popup {
   constructor() {
+    super()
+
+    const accessToken = localStorage.getItem(Auth.accessToken)
+    if (accessToken) {
+      location.href = "#/"
+      return
+    }
 
     this.emailElement = document.getElementById('email')
     this.passwordElement = document.getElementById('password')
     this.checkBoxElement = document.getElementById('checked')
-    this.processElement = document.getElementById("logIn")
-
-    this.processElement.addEventListener('click', this.processForm.bind(this))
+    this.buttonElement = document.getElementById("logIn")
+    this.buttonElement.addEventListener('click', this.processLogin.bind(this))
   }
 
   validateLogin() {
@@ -37,7 +45,7 @@ export class Login {
     return isValid
   }
 
-  async processForm() {
+  async processLogin() {
     if (this.validateLogin()) {
       const email = this.emailElement.value
       const password = this.passwordElement.value
@@ -49,14 +57,32 @@ export class Login {
           password: password
         })
 
-        // Если прошло успешно
         if (result) {
-          console.log(result)
           if (result.error || !result.tokens.accessToken || !result.tokens.refreshToken || !result.user.name || !result.user.lastName || !result.user.id) {
+            this.popupElement.classList.remove('hide')
+            this.popupContent.style.cssText = `
+                        height: 10rem;
+                    `;
+            this.popupTextElement.textContent = result.message
+            this.popupTextElement.style.color = 'red'
+            this.popupButtonElement.style.display = 'none'
+
+            setTimeout(() => {
+              this.popupElement.classList.add('hide')
+              location.href = '#/login'
+            }, 3000)
+
             throw new Error(result.message)
           }
 
-          location.hash = "#/"
+          Auth.setTokens(result.tokens.accessToken, result.tokens.refreshToken )
+          Auth.setUserInfo({
+            name:result.user.name,
+            lastName:result.user.lastName,
+            email: email
+          })
+
+          location.href = "#/"
         }
       } catch (error) {
         console.log(error)

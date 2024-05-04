@@ -1,22 +1,26 @@
 import {CustomHttp} from "../services/custom-http.js";
-import config from "../config/config";
+import config from "../config/config.js";
+import {Auth} from "../services/auth.js";
+import {Popup} from "./popup.js";
 
-export class Login {
+export class Login extends Popup {
   constructor() {
+    super()
+
+    const accessToken = localStorage.getItem(Auth.accessToken)
+    if (accessToken) {
+      location.href = "#/"
+      return
+    }
 
     this.emailElement = document.getElementById('email')
     this.passwordElement = document.getElementById('password')
-
-    // Vfrcbv123q1@
-
-    this.processElement = document.getElementById("login")
-    this.processElement.addEventListener('click', this.processForm.bind(this))
-
+    this.checkBoxElement = document.getElementById('checked')
+    this.buttonElement = document.getElementById("logIn")
+    this.buttonElement.addEventListener('click', this.processLogin.bind(this))
   }
 
-  // Vfrcbv123q1@
-
-  validateForm() {
+  validateLogin() {
     let isValid = true
 
     if (this.emailElement.value && this.emailElement.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
@@ -33,12 +37,16 @@ export class Login {
       isValid = false;
     }
 
+    if(!this.checkBoxElement.checked) {
+      this.checkBoxElement.nextElementSibling.style.color = 'red'
+      isValid = false;
+    }
 
     return isValid
   }
 
-  async processForm() {
-    if (this.validateForm()) {
+  async processLogin() {
+    if (this.validateLogin()) {
       const email = this.emailElement.value
       const password = this.passwordElement.value
 
@@ -49,11 +57,30 @@ export class Login {
           password: password
         })
 
-        // Если прошло успешно
         if (result) {
-          if (result.error || !result.accessToken || !result.refreshToken || !result.fullName || !result.userId) {
+          if (result.error || !result.tokens.accessToken || !result.tokens.refreshToken || !result.user.name || !result.user.lastName || !result.user.id) {
+            this.popupElement.classList.remove('hide')
+            this.popupContent.style.cssText = `
+                        height: 10rem;
+                    `;
+            this.popupTextElement.textContent = result.message
+            this.popupTextElement.style.color = 'red'
+            this.popupButtonElement.style.display = 'none'
+
+            setTimeout(() => {
+              this.popupElement.classList.add('hide')
+              location.href = '#/login'
+            }, 3000)
+
             throw new Error(result.message)
           }
+
+          Auth.setTokens(result.tokens.accessToken, result.tokens.refreshToken )
+          Auth.setUserInfo({
+            name:result.user.name,
+            lastName:result.user.lastName,
+            email: email
+          })
 
           location.href = "#/"
         }

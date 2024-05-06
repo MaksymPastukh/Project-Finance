@@ -32,6 +32,29 @@ export class Auth {
     return false
   }
 
+  static async logout () {
+    const refreshToken = localStorage.getItem(this.refreshToken)
+    if (refreshToken) {
+      const response = await fetch(config.host + "/logout", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ refreshToken: refreshToken })
+      })
+
+      if (response && response.status === 200) {
+        const result = await response.json()
+        if (result && !result.error) {
+          Auth.removeTokens()
+          localStorage.removeItem(Auth.userInfo)
+          return true
+        }
+      }
+    }
+  }
+
   // Метод записи токенов
   static setTokens(access, refresh) {
     localStorage.setItem(this.accessToken, access)

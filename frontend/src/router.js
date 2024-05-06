@@ -1,6 +1,7 @@
 import {Signup} from "./components/sign-up.js";
 import {Login} from "./components/login.js";
 import {SideBar} from "./components/side-bar.js";
+import {Logout} from "./components/logout.js";
 
 export class Router {
   constructor() {
@@ -16,6 +17,7 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
       }
     }, {
       route: '#/login',
@@ -43,6 +45,8 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+
       }
     }, {
       route: '#/income-expenses-create',
@@ -52,6 +56,8 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+
 
       }
     }, {
@@ -62,6 +68,8 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+
       }
     }, {
       route: '#/expense-category',
@@ -80,6 +88,7 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
       }
     }, {
       route: '#/expense-edit',
@@ -98,6 +107,7 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
       }
     }, {
       route: '#/income-create',
@@ -107,6 +117,7 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
       }
     }, {
       route: '#/income-edit',
@@ -116,6 +127,7 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
       }
     },
     ]
@@ -132,21 +144,21 @@ export class Router {
       return
     }
 
-    if(newRoute) {
+    if (newRoute) {
       this.contentTitle.innerText = newRoute.title
 
-      if(newRoute.template) {
+      if (newRoute.template) {
         let contentBlock = this.contentElement
-        if(newRoute.layout) {
-            this.contentElement.innerHTML = await fetch(newRoute.layout)
-              .then(response => response.text())
-            contentBlock = document.getElementById('content-layout')
+        if (newRoute.layout) {
+          this.contentElement.innerHTML = await fetch(newRoute.layout)
+            .then(response => response.text())
+          contentBlock = document.getElementById('content-layout')
         }
 
         contentBlock.innerHTML = await fetch(newRoute.template).then(response => response.text())
       }
 
-        if(newRoute.load && typeof newRoute.load === 'function') {
+      if (newRoute.load && typeof newRoute.load === 'function') {
         newRoute.load()
       }
     }

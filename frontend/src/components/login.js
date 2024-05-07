@@ -83,6 +83,7 @@ export class Login extends Popup {
           })
 
           location.href = "#/"
+
         }
       } catch (error) {
         console.log(error)

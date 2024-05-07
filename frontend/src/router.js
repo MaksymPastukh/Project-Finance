@@ -2,6 +2,7 @@ import {Signup} from "./components/sign-up.js";
 import {Login} from "./components/login.js";
 import {SideBar} from "./components/side-bar.js";
 import {Logout} from "./components/logout.js";
+import {Income} from "./components/income.js";
 
 export class Router {
   constructor() {
@@ -108,6 +109,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
+        new Income()
       }
     }, {
       route: '#/income-create',

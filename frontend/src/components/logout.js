@@ -4,11 +4,8 @@ import {Auth} from "../services/auth.js";
 export class Logout extends Popup {
   constructor() {
     super();
-
     this.imageProfileElement = document.getElementById('profile-image')
-
     this.initLogout()
-
   }
 
  initLogout() {
@@ -20,8 +17,6 @@ export class Logout extends Popup {
                     `;
       this.popupTextElement.textContent = 'Do you really walk out?'
       this.popupTextElement.style.color = 'red'
-      this.popupButtonOne.style.display = 'none'
-      this.popupButtonTwo.style.display = 'none'
       const button = document.createElement('button');
       button.setAttribute('type', 'button');
       button.classList.add('button');
@@ -38,14 +33,15 @@ export class Logout extends Popup {
       this.popupTextElement.append(button)
 
       button.addEventListener('click', () => {
-        console.log(1)
         this.init()
+        this.reset()
+        this.hide()
       })
     })
   }
 
   async init() {
-    console.log(2)
     await Auth.logout()
+    window.location.href = "#/login"
   }
 }

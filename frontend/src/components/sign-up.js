@@ -92,7 +92,8 @@ export class Signup extends Popup {
             this.popupButtonElement.style.display = 'none'
 
             setTimeout(() => {
-              this.popupElement.classList.add('hide')
+              this.reset()
+              this.hide()
               location.href = '#/signup'
             }, 3000)
           } else {
@@ -105,7 +106,8 @@ export class Signup extends Popup {
             this.popupButtonElement.style.display = 'none'
 
             setTimeout(() => {
-              this.popupElement.classList.add('hide')
+              this.reset()
+              this.hide()
               location.href = '#/login'
             }, 5000)
           }

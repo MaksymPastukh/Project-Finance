@@ -10,8 +10,11 @@ export class Income extends Popup {
     this.incomeElement = null
     this.buttonDelete = null
     this.dataId = null
+    this.idCategory = 'idCategory'
+    this.data = null
     this.token = localStorage.getItem(Auth.accessToken)
     this.category = []
+    this.inputSaveEditing = document.getElementById('input-income-category')
 
     this.initIncome()
   }
@@ -21,27 +24,23 @@ export class Income extends Popup {
       if (!this.token) location.href = "#/login"
       try {
         const result = await CustomHttp.request(config.host + "/categories/income")
-        if(result) {
-          if(!result) throw new Error('Error')
+        if (result) {
+          if (!result) throw new Error('Error')
           this.category = result
 
           this.processIncomeCategory()
 
         }
-      }
-      catch (e) {
+      } catch (e) {
         return e
       }
-
-
-
     }
   }
 
   processIncomeCategory() {
     if (this.category && this.category.length) {
       this.category.forEach(item => {
-       this.incomeElement = document.createElement('div')
+        this.incomeElement = document.createElement('div')
         this.incomeElement.className = 'income-item'
         this.incomeElement.setAttribute("data-id", item.id)
 
@@ -49,13 +48,10 @@ export class Income extends Popup {
         incomeElementTextElement.className = "income-item-title"
         incomeElementTextElement.innerText = item.title
 
-        const linkElement = document.createElement('a');
-        linkElement.setAttribute('href', '/#/income-edit');
-        const buttonElement = document.createElement('button');
-        buttonElement.setAttribute('type', 'button');
-        buttonElement.classList.add('button', 'edit');
-        buttonElement.innerText = 'Edit';
-        linkElement.appendChild(buttonElement);
+        this.buttonEdit = document.createElement('button');
+        this.buttonEdit.setAttribute('id', 'button-edit');
+        this.buttonEdit.classList.add('button', 'edit-category');
+        this.buttonEdit.innerText = 'Edit';
 
         this.buttonDelete = document.createElement('button')
         this.buttonDelete.setAttribute('type', 'button');
@@ -64,27 +60,28 @@ export class Income extends Popup {
 
         this.incomeElements.appendChild(this.incomeElement)
         this.incomeElement.appendChild(incomeElementTextElement)
-        this.incomeElement.appendChild(linkElement)
+        this.incomeElement.appendChild(this.buttonEdit)
         this.incomeElement.appendChild(this.buttonDelete)
       })
 
       const createElement = document.createElement('a');
-      createElement.setAttribute('href', '/#/income-edit');
+      createElement.setAttribute('href', '/#/income-create');
       const buttonCreateElement = document.createElement('button');
       buttonCreateElement.setAttribute('type', 'button');
       buttonCreateElement.classList.add('create');
       buttonCreateElement.innerText = '+';
       createElement.appendChild(buttonCreateElement);
-
       this.incomeElements.appendChild(createElement)
 
       this.deleteCategory()
+      this.editingIncomeCategory = this.editingIncomeCategory.bind(this); // Привязка контекста
+      this.editingIncomeCategory(); // Вызов метода
     }
   }
 
-async deleteCategory() {
-    const test = document.querySelectorAll('.button.delete')
-    test.forEach(item => {
+  deleteCategory() {
+    const deleteCategory = document.querySelectorAll('.button.delete')
+    deleteCategory.forEach(item => {
       item.addEventListener('click', async (e) => {
         let incomeItem = e.target.closest('.income-item');
 
@@ -96,11 +93,25 @@ async deleteCategory() {
             if (result) {
               if (!result) throw new Error('Error')
 
-              console.log(result)
+              window.location.reload()
             }
           } catch (e) {
             return e
           }
+        }
+      })
+    })
+  }
+
+  editingIncomeCategory() {
+    const valueCategory = document.querySelectorAll('.button.edit-category')
+    valueCategory.forEach(item => {
+      item.addEventListener('click', (e) => {
+        let incomeItem = e.target.closest('.income-item');
+        if (incomeItem) {
+          this.data = incomeItem.getAttribute('data-id');
+          localStorage.setItem(this.idCategory, this.data);
+          window.location.href = '/#/income-edit'
         }
       })
     })

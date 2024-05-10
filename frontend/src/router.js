@@ -3,6 +3,8 @@ import {Login} from "./components/login.js";
 import {SideBar} from "./components/side-bar.js";
 import {Logout} from "./components/logout.js";
 import {Income} from "./components/income.js";
+import {IncomeEditing} from "./components/income-editing.js";
+import {IncomeCreating} from "./components/income-creating";
 
 export class Router {
   constructor() {
@@ -110,6 +112,7 @@ export class Router {
         new SideBar()
         new Logout()
         new Income()
+
       }
     }, {
       route: '#/income-create',
@@ -120,6 +123,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
+        new IncomeCreating()
       }
     }, {
       route: '#/income-edit',
@@ -130,6 +134,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
+        new IncomeEditing()
       }
     },
     ]

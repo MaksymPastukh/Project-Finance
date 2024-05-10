@@ -1,13 +1,10 @@
 export class Popup {
   constructor() {
-
-
     this.popupElement = document.getElementById('popup');
     this.popupContent = document.getElementById('popup-content');
     this.popupTextElement = document.getElementById('popup-text');
     this.popupButtonElement = document.getElementById('popup-button');
     this.buttonCancel = document.getElementById('button-cancel');
-
   }
 
   show() {
@@ -19,18 +16,6 @@ export class Popup {
     this.popupElement.classList.add('hide');
     this.popupElement.classList.remove('show');
     document.body.style.overflow = '';
-  }
-
-  modalShow() {
-    this.popupElement.forEach(item => {
-      item.addEventListener('click', (e) => {
-        const productTitle = e.target.closest('.item-order').querySelector('.name-order');
-        if (productTitle) {
-          this.popupElement.value = productTitle.innerText;
-          this.show();
-        }
-      })
-    })
   }
 
   reset() {
@@ -63,7 +48,6 @@ export class Popup {
       if (e.code === 'Escape' && this.popupElement.classList.contains('show')) {
         this.reset()
         this.hide()
-
       }
     })
 

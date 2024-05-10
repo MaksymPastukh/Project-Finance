@@ -68,7 +68,8 @@ export class Login extends Popup {
             this.popupButtonElement.style.display = 'none'
 
             setTimeout(() => {
-              this.popupElement.classList.add('hide')
+              this.reset()
+              this.hide()
               location.href = '#/login'
             }, 3000)
 

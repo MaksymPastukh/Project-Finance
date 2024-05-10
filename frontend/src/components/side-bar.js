@@ -17,6 +17,7 @@ export class SideBar extends Popup {
     }
     this.init()
     this.popupChangeBalance()
+
   }
 
   async init() {

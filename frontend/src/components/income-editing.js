@@ -1,11 +1,10 @@
-import {Income} from "./income";
-import {CustomHttp} from "../services/custom-http";
-import config from "../config/config";
+import {Income} from "./income.js";
+import {CustomHttp} from "../services/custom-http.js";
+import config from "../config/config.js";
 
 export class IncomeEditing extends Income {
   constructor() {
-    super();
-
+    super(false);
     this.buttonSaveEditing = document.getElementById('save-income-button')
     this.buttonCancelEditing = document.getElementById('cancel-income-button')
 
@@ -16,27 +15,26 @@ export class IncomeEditing extends Income {
   }
 
   async initIncomeEdit() {
-    let idCategory = localStorage.getItem(this.idCategory)
-    console.log(idCategory)
+    let idCategoryIncome = localStorage.getItem(this.idCategoryIncome)
 
-    if (this.token && idCategory) {
+    if (this.token && idCategoryIncome) {
       if (!this.token) location.href = "#/login";
 
 
-      if (idCategory) { // Используем переданное значение data вместо this.data
+      if (idCategoryIncome) {
         try {
-          const result = await CustomHttp.request(config.host + "/categories/income/" + idCategory, "PUT", {
+          const result = await CustomHttp.request(config.host + "/categories/income/" + idCategoryIncome, "PUT", {
             title: this.inputSaveEditing.value
           });
 
           if (result) {
             if (!result) throw new Error('Error');
 
-            localStorage.removeItem(this.idCategory);
+            localStorage.removeItem(this.idCategoryIncome);
             window.location.href = '/#/income-category';
           }
         } catch (e) {
-          return e;
+          throw new Error(e);
         }
       }
     }

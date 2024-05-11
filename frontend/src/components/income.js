@@ -4,19 +4,18 @@ import {CustomHttp} from "../services/custom-http.js";
 import config from "../config/config.js";
 
 export class Income extends Popup {
-  constructor() {
+  constructor(initIncome = true) {
     super();
     this.incomeElements = document.getElementById('income-items')
     this.incomeElement = null
     this.buttonDelete = null
-    this.dataId = null
-    this.idCategory = 'idCategory'
-    this.data = null
+    this.atrributId = null
+    this.idCategoryIncome = 'idCategory'
     this.token = localStorage.getItem(Auth.accessToken)
-    this.category = []
+    this.categoryIncome = []
     this.inputSaveEditing = document.getElementById('input-income-category')
 
-    this.initIncome()
+    if(initIncome) this.initIncome()
   }
 
   async initIncome() {
@@ -26,20 +25,19 @@ export class Income extends Popup {
         const result = await CustomHttp.request(config.host + "/categories/income")
         if (result) {
           if (!result) throw new Error('Error')
-          this.category = result
 
+          this.categoryIncome = result
           this.processIncomeCategory()
-
         }
       } catch (e) {
-        return e
+        throw new Error(e)
       }
     }
   }
 
   processIncomeCategory() {
-    if (this.category && this.category.length) {
-      this.category.forEach(item => {
+    if (this.categoryIncome && this.categoryIncome.length) {
+      this.categoryIncome.forEach(item => {
         this.incomeElement = document.createElement('div')
         this.incomeElement.className = 'income-item'
         this.incomeElement.setAttribute("data-id", item.id)
@@ -64,39 +62,85 @@ export class Income extends Popup {
         this.incomeElement.appendChild(this.buttonDelete)
       })
 
-      const createElement = document.createElement('a');
-      createElement.setAttribute('href', '/#/income-create');
-      const buttonCreateElement = document.createElement('button');
-      buttonCreateElement.setAttribute('type', 'button');
-      buttonCreateElement.classList.add('create');
-      buttonCreateElement.innerText = '+';
-      createElement.appendChild(buttonCreateElement);
-      this.incomeElements.appendChild(createElement)
-
       this.deleteCategory()
-      this.editingIncomeCategory = this.editingIncomeCategory.bind(this); // Привязка контекста
-      this.editingIncomeCategory(); // Вызов метода
+      this.editingIncomeCategory = this.editingIncomeCategory.bind(this);
+      this.editingIncomeCategory();
     }
+
+    const createElement = document.createElement('a');
+    createElement.setAttribute('href', '/#/income-create');
+    const buttonCreateElement = document.createElement('button');
+    buttonCreateElement.setAttribute('type', 'button');
+    buttonCreateElement.classList.add('create');
+    buttonCreateElement.innerText = '+';
+    createElement.appendChild(buttonCreateElement);
+    this.incomeElements.appendChild(createElement)
   }
 
   deleteCategory() {
     const deleteCategory = document.querySelectorAll('.button.delete')
     deleteCategory.forEach(item => {
-      item.addEventListener('click', async (e) => {
+      item.addEventListener('click', (e) => {
         let incomeItem = e.target.closest('.income-item');
 
         if (incomeItem) {
-          this.dataId = incomeItem.getAttribute('data-id');
+          this.atrributId = incomeItem.getAttribute('data-id');
 
-          try {
-            const result = await CustomHttp.request(config.host + "/categories/income/" + this.dataId, "DELETE")
-            if (result) {
-              if (!result) throw new Error('Error')
+          if(this.atrributId) {
+            this.popupElement.classList.remove('hide')
+            this.popupContent.style.cssText = `
+                        height: 16rem;
+                        width: 46rem;
+                    `;
+            this.popupTextElement.textContent = 'Do you really want to delete the category?'
+            this.popupTextElement.style.color = '#290661'
+            const buttonDelete = document.createElement('button');
+            buttonDelete.setAttribute('type', 'button');
+            buttonDelete.classList.add('button');
+            buttonDelete.textContent = 'Yes, delete it.'
+            buttonDelete.style.cssText = `
+      
+                        width: 11.1rem;
+                        font-size: 14px;
+                        background: #198754;
+                        font-family: "Roboto-Regular", sans-serif;
+                        margin-top: 2rem;
+                    `;
 
-              window.location.reload()
-            }
-          } catch (e) {
-            return e
+            const buttonCancel = document.createElement('button');
+            buttonCancel.setAttribute('type', 'button');
+            buttonCancel.classList.add('button');
+            buttonCancel.textContent = 'Don\'t delete'
+            buttonCancel.style.cssText = `
+                        width: 11.1rem;
+                        font-size: 14px;
+                        margin-left: 1.2rem;
+                        background: #dc3545;
+                        font-family: "Roboto-Regular", sans-serif;
+                        margin-top: 2rem;
+                    `;
+
+            this.popupTextElement.append(buttonDelete)
+            this.popupTextElement.append(buttonCancel)
+
+            buttonDelete.addEventListener('click', async () => {
+              try {
+                const result = await CustomHttp.request(config.host + "/categories/income/" + this.atrributId, "DELETE")
+                if (result) {
+                  if (!result) throw new Error('Error')
+                  this.reset()
+                  this.hide()
+                  window.location.reload()
+                }
+              } catch (e) {
+                return e
+              }
+            })
+
+            buttonCancel.addEventListener('click', () => {
+              this.reset()
+              this.hide()
+            })
           }
         }
       })
@@ -107,10 +151,12 @@ export class Income extends Popup {
     const valueCategory = document.querySelectorAll('.button.edit-category')
     valueCategory.forEach(item => {
       item.addEventListener('click', (e) => {
+
         let incomeItem = e.target.closest('.income-item');
+
         if (incomeItem) {
-          this.data = incomeItem.getAttribute('data-id');
-          localStorage.setItem(this.idCategory, this.data);
+          this.atrributId = incomeItem.getAttribute('data-id');
+          localStorage.setItem(this.idCategoryIncome, this.atrributId);
           window.location.href = '/#/income-edit'
         }
       })

@@ -4,7 +4,7 @@ import config from "../config/config.js";
 
 export class IncomeCreating extends Income {
   constructor() {
-    super();
+    super(false);
     this.incomeCreatingInput = document.getElementById('input-create-income')
     this.buttonCreateCreating = document.getElementById('create-income-button')
     this.buttonCancelCreating = document.getElementById('cancel-income-button')

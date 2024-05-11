@@ -4,7 +4,12 @@ import {SideBar} from "./components/side-bar.js";
 import {Logout} from "./components/logout.js";
 import {Income} from "./components/income.js";
 import {IncomeEditing} from "./components/income-editing.js";
-import {IncomeCreating} from "./components/income-creating";
+import {IncomeCreating} from "./components/income-creating.js";
+import {Expense} from "./components/expense.js";
+import {ExpenseEditing} from "./components/expense-editing.js";
+import {ExpenseCreating} from "./components/expense-creating.js";
+import {IncomeAndExpense} from "./components/income-and-expense.js";
+import {IncomeAndExpenseCreate} from "./components/income-and-expense-create.js";
 
 export class Router {
   constructor() {
@@ -49,6 +54,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
+        new IncomeAndExpense()
 
       }
     }, {
@@ -60,7 +66,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
-
+        new IncomeAndExpenseCreate()
 
       }
     }, {
@@ -82,6 +88,7 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Expense()
       }
     }, {
       route: '#/expense-create',
@@ -92,6 +99,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
+        new ExpenseCreating()
       }
     }, {
       route: '#/expense-edit',
@@ -101,6 +109,8 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new ExpenseEditing()
       }
     }, {
       route: '#/income-category',

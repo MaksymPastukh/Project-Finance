@@ -8,8 +8,9 @@ import {IncomeCreating} from "./components/income-creating.js";
 import {Expense} from "./components/expense.js";
 import {ExpenseEditing} from "./components/expense-editing.js";
 import {ExpenseCreating} from "./components/expense-creating.js";
-import {IncomeAndExpense} from "./components/income-and-expense.js";
-import {IncomeAndExpenseCreate} from "./components/income-and-expense-create.js";
+import {Operations} from "./components/operations.js";
+import {OperationsCreate} from "./components/operations-create.js";
+import {OperationsEditing} from "./components/operations-editing.js";
 
 export class Router {
   constructor() {
@@ -54,7 +55,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
-        new IncomeAndExpense()
+        new Operations()
 
       }
     }, {
@@ -66,8 +67,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
-        new IncomeAndExpenseCreate()
-
+        new OperationsCreate()
       }
     }, {
       route: '#/income-expenses-edit',
@@ -78,7 +78,7 @@ export class Router {
       load: () => {
         new SideBar()
         new Logout()
-
+        new OperationsEditing()
       }
     }, {
       route: '#/expense-category',

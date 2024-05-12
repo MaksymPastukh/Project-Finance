@@ -1,10 +1,10 @@
-import {IncomeAndExpense} from "./income-and-expense.js";
+import {Operations} from "./operations.js";
 import {CustomHttp} from "../services/custom-http";
 import config from "../config/config";
 
-export class IncomeAndExpenseCreate extends IncomeAndExpense {
+export class OperationsCreate extends Operations {
   constructor() {
-    super();
+    super(false);
     this.inputType = document.getElementById('income-expenses-type')
     this.inputAmount = document.getElementById('income-expenses-amount')
     this.inputDate = document.getElementById('income-expenses-date')
@@ -25,8 +25,8 @@ export class IncomeAndExpenseCreate extends IncomeAndExpense {
       try {
         const result = await CustomHttp.request(config.host + "/operations", "POST", {
           type: this.inputType.value,
-          amount: this.inputAmount.value,
-          date: this.inputDate.value,
+          amount: +this.inputAmount.value,
+          date: Operations.chengeData(this.inputDate.value),
           comment: this.inputComment.value,
           category_id: this.inputCategory.value
         });

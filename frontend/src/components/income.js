@@ -42,6 +42,7 @@ export class Income extends Popup {
         this.incomeElement.className = 'income-item'
         this.incomeElement.setAttribute("data-id", item.id)
 
+
         const incomeElementTextElement = document.createElement("div")
         incomeElementTextElement.className = "income-item-title"
         incomeElementTextElement.innerText = item.title
@@ -63,7 +64,6 @@ export class Income extends Popup {
       })
 
       this.deleteCategory()
-      this.editingIncomeCategory = this.editingIncomeCategory.bind(this);
       this.editingIncomeCategory();
     }
 
@@ -162,4 +162,5 @@ export class Income extends Popup {
       })
     })
   }
+
 }

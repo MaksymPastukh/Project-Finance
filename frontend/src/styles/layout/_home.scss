@@ -145,6 +145,10 @@
       .tabs-content-item {
         min-width: 104rem;
 
+        canvas {
+          max-height: 100%;
+        }
+
         @include respond(tab-land) {
           flex-direction: column;
           align-items: center;

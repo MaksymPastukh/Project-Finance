@@ -21,7 +21,7 @@
   .income-expenses-content {
     margin-top: 4rem;
 
-    input {
+    input, select {
       width: 39.7rem;
       height: 3.8rem;
       padding: .7rem 1.6rem;
@@ -30,6 +30,9 @@
       border: .1rem solid #d9d9d9;
       border-radius: .5rem;
       margin-bottom: 1rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
 
 
       @include respond(phone) {

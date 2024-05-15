@@ -47,7 +47,6 @@ export class Auth {
       if (response && response.status === 200) {
         const result = await response.json()
         if (result && !result.error) {
-          localStorage.removeItem(Auth.userInfo)
           Auth.removeTokens()
           return true
         }
@@ -65,6 +64,9 @@ export class Auth {
   static removeTokens () {
     localStorage.removeItem(this.accessToken)
     localStorage.removeItem(this.refreshToken)
+    localStorage.removeItem(this.userInfo)
+    localStorage.removeItem('idIncomeAndExpense');
+
   }
 
   // Метод записи информации о пользователе

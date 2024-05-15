@@ -3,8 +3,11 @@
     Editing income/expense
   </div>
   <div class="income-expenses-content flex flex-wrap flex-col">
-    <input type="text" placeholder="Type..." id="operations-edit-type">
-    <input type="text" placeholder="Category..." id="operations-edit-category">
+    <select type="text" id="operations-edit-type">
+      <option value="income">income</option>
+      <option value="expense">expense</option>
+    </select>
+    <select type="text" id="operations-edit-category"></select>
     <input type="text" placeholder="Sum in $..." id="operations-edit-amount">
     <input type="text" placeholder="Date..."  id="operations-edit-date">
     <input type="text" placeholder="Comments..."  id="operations-edit-comments">

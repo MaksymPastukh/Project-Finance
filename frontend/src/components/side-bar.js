@@ -15,9 +15,9 @@ export class SideBar extends Popup {
       success: 'The balance amount has been successfully changed.',
       error: 'Please enter numeric value.',
     }
+
     this.init()
     this.popupChangeBalance()
-
   }
 
   async init() {
@@ -66,7 +66,6 @@ export class SideBar extends Popup {
                     `;
 
       this.popupButtonElement.append(this.buttonSave)
-
       this.buttonCancel.setAttribute('type', 'button');
       this.buttonCancel.classList.add('button');
       this.buttonCancel.textContent = 'Cancel'
@@ -91,7 +90,6 @@ export class SideBar extends Popup {
   }
 
   async initChange(amount) {
-
     try {
       if (isNaN(amount) || amount === '') {
         this.popupContent.style.cssText = `

@@ -1,7 +1,6 @@
-import {Signup} from "./components/sign-up.js";
-import {Login} from "./components/login.js";
+import {SignupLogin} from "./components/signup-login.js";
+import {Home} from "./components/home.js";
 import {SideBar} from "./components/side-bar.js";
-import {Logout} from "./components/logout.js";
 import {Income} from "./components/income.js";
 import {IncomeEditing} from "./components/income-editing.js";
 import {IncomeCreating} from "./components/income-creating.js";
@@ -11,6 +10,7 @@ import {ExpenseCreating} from "./components/expense-creating.js";
 import {Operations} from "./components/operations.js";
 import {OperationsCreate} from "./components/operations-create.js";
 import {OperationsEditing} from "./components/operations-editing.js";
+import {Logout} from "./components/logout.js";
 
 export class Router {
   constructor() {
@@ -26,6 +26,7 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Home()
         new Logout()
       }
     }, {
@@ -35,7 +36,7 @@ export class Router {
       styles: this.styles,
       layout: false,
       load: () => {
-        new Login()
+        new SignupLogin('login')
       }
     }, {
       route: '#/signup',
@@ -44,12 +45,12 @@ export class Router {
       styles: this.styles,
       layout: false,
       load: () => {
-        new Signup()
+        new SignupLogin('signup')
       }
     }, {
       route: '#/income-expenses',
       title: 'income-Expenses',
-      template: 'templates/income-expenses.html',
+      template: 'templates/operations.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
@@ -61,7 +62,7 @@ export class Router {
     }, {
       route: '#/income-expenses-create',
       title: 'Income-Expenses-Create',
-      template: 'templates/income-expenses-create.html',
+      template: 'templates/operations-create.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
@@ -72,7 +73,7 @@ export class Router {
     }, {
       route: '#/income-expenses-edit',
       title: 'Income-Expenses-Edit',
-      template: 'templates/income-expenses-editing.html',
+      template: 'templates/operations-editing.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {

@@ -32,9 +32,7 @@ export class Popup {
     for (let i = 0; i < childElements.length; i++) {
       childElements[i].style = '';
     }
-
   }
-
 
   targetCloseModal() {
     this.popupElement.addEventListener('click', (e) => {
@@ -56,4 +54,5 @@ export class Popup {
       this.hide()
     })
   }
+
 }

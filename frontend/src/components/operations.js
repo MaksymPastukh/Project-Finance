@@ -2,6 +2,7 @@ import {Auth} from "../services/auth.js";
 import {CustomHttp} from "../services/custom-http.js";
 import config from "../config/config.js";
 import {Popup} from "./popup.js";
+import {GetOperationsFilter} from "../utils/getOperationsFilter";
 
 export class Operations extends Popup{
   constructor(init = true) {
@@ -12,18 +13,17 @@ export class Operations extends Popup{
     this.inputDataFrom = document.getElementById('dataFrom')
     this.inputDataTo = document.getElementById('dataTo')
     this.idLocalStorage = 'idIncomeAndExpense'
-    this.display = 'flex'
     this.atrribut = null
     this.token = localStorage.getItem(Auth.accessToken)
     this.array = []
+    this.selectTypeElement = null
+    this.selectTypeValue = null
 
     if(init) {
       this.initTabs()
       this.init()
     }
   }
-
-
 
   initTabs() {
     this.header.addEventListener('click', (e) => {
@@ -45,12 +45,21 @@ export class Operations extends Popup{
     });
   }
 
+  getValueTab() {
+    let valueTab = null
+    this.tab.forEach(item => {
+      if(item.classList.contains('active')) valueTab = item.innerText
+    })
+
+    return valueTab
+  }
+
   async init() {
     if (this.token) {
       if (!this.token) location.href = '#/login'
       try {
         setTimeout(async () => {
-          const result = await CustomHttp.request(this.getOperations(this.getValueTab(), this.inputDataFrom.value, this.inputDataTo.value))
+          const result = await CustomHttp.request(GetOperationsFilter.urlOperationsFilter(this.getValueTab(),this.inputDataFrom.value, this.inputDataTo.value))
 
           if (result) {
             if (!result) throw new Error('Error')
@@ -66,44 +75,6 @@ export class Operations extends Popup{
     }
   }
 
-  getValueTab() {
-    let valueTab = null
-    this.tab.forEach(item => {
-      if(item.classList.contains('active')) valueTab = item.innerText
-    })
-
-    return valueTab
-  }
-
-
-  getOperations(period = 'period', dateFrom = null, dateTo = null) {
-    let url = config.host + '/operations'
-
-    switch (period) {
-      case 'Week':
-        url += '?period=week'
-        break;
-      case 'Month':
-        url += '?period=month'
-        break;
-      case 'Year':
-        url += '?period=year'
-        break;
-      case 'All':
-        url += '?period=all'
-        break;
-      case 'Interval':
-        if (dateFrom && dateTo) {
-          url += `?period=interval&dateFrom=${dateFrom}&dateTo=${dateTo}`
-        } else {
-          url += `?period=interval&dateFrom=${Operations.chengeData(dateFrom)}&dateTo=${Operations.chengeData(dateTo)}`
-        }
-        break;
-    }
-
-    return url
-  }
-
   processTableIncomeAndExpense() {
     if(this.array && this.array.length) {
       this.tabsContentItem = document.createElement('div')
@@ -112,7 +83,6 @@ export class Operations extends Popup{
       this.tabsTable = document.createElement('table')
       this.tabsThead = document.createElement('thead')
       this.tabsTheadTr = document.createElement('tr')
-
 
       this.tabsTheadThOperation = document.createElement('th')
       this.tabsTheadThOperation.innerText = '№ Operation'
@@ -129,7 +99,6 @@ export class Operations extends Popup{
 
       this.array.forEach((item, index) => {
         let numberOperations = index + 1
-        console.log(item)
 
         this.tabsTbody = document.createElement('tbody')
         this.tabsTbody.classList.add('tbody')
@@ -151,7 +120,7 @@ export class Operations extends Popup{
         this.tabsTbodyTdAmount.innerText = item.amount
         this.tabsTbodyTdDate = document.createElement('td')
         this.tabsTbodyTdDate.classList.add('date')
-        this.tabsTbodyTdDate.innerText = Operations.chengeData(item.date)
+        this.tabsTbodyTdDate.innerText = GetOperationsFilter.formatDate(item.date)
         this.tabsTbodyTdComment = document.createElement('td')
         this.tabsTbodyTdComment.classList.add('comment')
         this.tabsTbodyTdComment.innerText = item.comment
@@ -178,11 +147,6 @@ export class Operations extends Popup{
         this.tabsTbodyTdButton.appendChild(this.tabsTableButtonClear)
         this.tabsTbodyTdButton.appendChild(this.tabsTableButtonEdit)
 
-
-
-
-
-
         this.tabsTable.appendChild(this.tabsTbody)
         this.tabsTbody.appendChild(this.tabsTbodyTr)
         this.tabsTbodyTr.appendChild(this.tabsTbodyTdOperation)
@@ -192,7 +156,6 @@ export class Operations extends Popup{
         this.tabsTbodyTr.appendChild(this.tabsTbodyTdDate)
         this.tabsTbodyTr.appendChild(this.tabsTbodyTdComment)
         this.tabsTbodyTr.appendChild(this.tabsTbodyTdButton)
-
       })
 
       this.tabContent.appendChild(this.tabsContentItem)
@@ -208,7 +171,6 @@ export class Operations extends Popup{
       this.tabsTheadTr.appendChild(this.tabsTheadThComment)
 
       this.delete()
-      this.editing = this.editing.bind(this);
       this.editing();
     }
   }
@@ -296,14 +258,5 @@ export class Operations extends Popup{
         }
       })
     })
-  }
-
-  static chengeData(data) {
-    let newData = new Date(data)
-    let day = newData.getDate();
-    let month = newData.getMonth() + 1;
-    let year = newData.getFullYear();
-
-    return day + "." + month + "." + year;
   }
 }

@@ -25,13 +25,29 @@ export class SignupLogin extends Popup {
     if(this.page === 'signup') this.buttonElementSingUp.addEventListener('click', this.processSingUp.bind(this))
   }
 
-  validate() {
+  validateForm() {
     let isValid = true
+
+    if (this.emailElement.value && this.emailElement.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
+      this.emailElement.classList.remove('error-input')
+    } else {
+      this.emailElement.classList.add('error-input')
+      isValid = false;
+    }
+
+
     if(this.page === 'signup') {
       if (this.fullNameElement.value && this.fullNameElement.value.match(/^[a-zA-Z\s]+$/)) {
         this.fullNameElement.classList.remove('error-input')
       } else {
         this.fullNameElement.classList.add('error-input')
+        isValid = false;
+      }
+
+      if (this.passwordElement.value && this.passwordElement.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+        this.passwordElement.classList.remove('error-input')
+      } else {
+        this.passwordElement.classList.add('error-input')
         isValid = false;
       }
 
@@ -43,28 +59,25 @@ export class SignupLogin extends Popup {
       }
     }
 
+    if(this.page === 'login') {
+      if(!this.checkBoxElement.checked) {
+        this.checkBoxElement.nextElementSibling.style.color = 'red'
+        isValid = false;
+      }
 
-    if(this.page === 'login')
-
-    if (this.passwordElement.value && this.passwordElement.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
-      this.passwordElement.classList.remove('error-input')
-    } else {
-      this.passwordElement.classList.add('error-input')
-      isValid = false;
-    }
-
-    if (this.emailElement.value && this.emailElement.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
-      this.emailElement.classList.remove('error-input')
-    } else {
-      this.emailElement.classList.add('error-input')
-      isValid = false;
+      if (this.passwordElement.value) {
+        this.passwordElement.classList.remove('error-input')
+      } else {
+        this.passwordElement.classList.add('error-input')
+        isValid = false;
+      }
     }
 
     return isValid
   }
 
   async processSingUp() {
-    if (this.validate()) {
+    if (this.validateForm()) {
 
       const fullName = this.fullNameElement.value
       const email = this.emailElement.value
@@ -125,7 +138,7 @@ export class SignupLogin extends Popup {
   }
 
   async processLogin() {
-    if (this.validate()) {
+    if (this.validateForm()) {
       const email = this.emailElement.value
       const password = this.passwordElement.value
 

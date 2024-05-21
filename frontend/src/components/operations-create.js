@@ -16,6 +16,18 @@ export class OperationsCreate extends Operations {
     this.arraySelectIncome = []
     this.arraySelectExpense = []
 
+    this.inputTypeDate.forEach(e => {
+      e.addEventListener("focusin", function (ev) {
+        e.type = 'date';
+      })
+    });
+
+    this.inputTypeDate.forEach(e => {
+      e.addEventListener("focusout", function (ev) {
+        e.type = 'text';
+      })
+    });
+
     this.buttonCreateOf.addEventListener('click', this.initCreating.bind(this));
     this.buttonCancelOf.addEventListener('click', () => {
       window.location.href = '/#/income-expenses';
@@ -79,6 +91,8 @@ export class OperationsCreate extends Operations {
       }
     }
   }
+
+
 
   createChangeSelectType() {
     this.selectType.addEventListener('change', () => {

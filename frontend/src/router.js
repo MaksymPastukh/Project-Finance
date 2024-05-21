@@ -49,7 +49,7 @@ export class Router {
       }
     }, {
       route: '#/income-expenses',
-      title: 'income-Expenses',
+      title: 'Income-Expenses',
       template: 'templates/operations.html',
       layout: 'templates/layout.html',
       styles: this.styles,
@@ -83,7 +83,7 @@ export class Router {
       }
     }, {
       route: '#/expense-category',
-      title: 'expense category',
+      title: 'Expense category',
       template: 'templates/expense-category.html',
       layout: 'templates/layout.html',
       styles: this.styles,
@@ -104,7 +104,7 @@ export class Router {
       }
     }, {
       route: '#/expense-edit',
-      title: 'expense edit',
+      title: 'Expense edit',
       template: 'templates/expense-editing-category.html',
       layout: 'templates/layout.html',
       styles: this.styles,
@@ -115,7 +115,7 @@ export class Router {
       }
     }, {
       route: '#/income-category',
-      title: 'income category',
+      title: 'Income category',
       template: 'templates/income-category.html',
       layout: 'templates/layout.html',
       styles: this.styles,

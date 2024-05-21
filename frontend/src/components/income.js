@@ -27,6 +27,7 @@ export class Income extends Popup {
           if (!result) throw new Error('Error')
 
           this.categoryIncome = result
+
           this.processIncomeCategory()
         }
       } catch (e) {
@@ -45,6 +46,8 @@ export class Income extends Popup {
 
         const incomeElementTextElement = document.createElement("div")
         incomeElementTextElement.className = "income-item-title"
+        incomeElementTextElement.setAttribute('id', 'income-item-title');
+
         incomeElementTextElement.innerText = item.title
 
         this.buttonEdit = document.createElement('button');
@@ -149,9 +152,9 @@ export class Income extends Popup {
 
   editingIncomeCategory() {
     const valueCategory = document.querySelectorAll('.button.edit-category')
+
     valueCategory.forEach(item => {
       item.addEventListener('click', (e) => {
-
         let incomeItem = e.target.closest('.income-item');
 
         if (incomeItem) {

@@ -13,16 +13,49 @@ export class OperationsEditing extends Operations {
     this.selectCategory = document.getElementById('operations-edit-category')
     this.buttonSaveEditing = document.getElementById('save-operations-button')
     this.buttonCancelEditing = document.getElementById('cancel-operations-button')
+    this.idCategoryOperations = localStorage.getItem(this.idLocalStorage)
+
     this.arraySelectIncome = []
     this.arraySelectExpense = []
+    this.arrayEditOptions = []
 
     this.buttonSaveEditing.addEventListener('click', this.initOperationsEdit.bind(this));
     this.buttonCancelEditing.addEventListener('click', () => {
       window.location.href = '/#/income-expenses';
     })
 
+
+    this.initEditOptions()
     this.initIncomeCategory()
     this.initExpenseCategory()
+  }
+
+  async initEditOptions() {
+    if (this.token) {
+      if (!this.token) location.href = '#/login'
+      try {
+        const result = await CustomHttp.request(config.host + "/operations?period=all")
+
+        if (result) {
+          if (!result) throw new Error('Error')
+          this.arrayEditOptions = result
+          this.arrayEditOptions.forEach(item => {
+            if(item.id === Number(this.idCategoryOperations)) {
+              this.selectType.value = item.type
+              this.optionsEdit = document.createElement("option");
+              this.optionsEdit.value = item.id;
+              this.optionsEdit.text = item.category;
+              this.selectCategory.appendChild(this.optionsEdit);
+              this.inputAmount.value = item.amount
+              this.inputDate.value = item.date
+              this.inputComment.value = item.comment
+            }
+          })
+        }
+      } catch (e) {
+        throw new Error(e)
+      }
+    }
   }
 
   async initIncomeCategory() {
@@ -40,6 +73,7 @@ export class OperationsEditing extends Operations {
     }
 
   }
+
   async initExpenseCategory() {
     try {
       const result = await CustomHttp.request(config.host + "/categories/expense")
@@ -59,14 +93,13 @@ export class OperationsEditing extends Operations {
 
 
   async initOperationsEdit() {
-    let idCategoryOperations = localStorage.getItem(this.idLocalStorage)
 
-    if (this.token && idCategoryOperations) {
+    if (this.token && this.idCategoryOperations) {
       if (!this.token) location.href = "#/login";
 
-      if (idCategoryOperations) {
+      if (this.idCategoryOperations) {
         try {
-          const result = await CustomHttp.request(config.host + "/operations/" + idCategoryOperations, "PUT", {
+          const result = await CustomHttp.request(config.host + "/operations/" + this.idCategoryOperations, "PUT", {
             type: this.selectType.value,
             amount: +this.inputAmount.value,
             date: GetOperationsFilter.chengeToData(this.inputDate.value),
@@ -100,21 +133,21 @@ export class OperationsEditing extends Operations {
     this.selectTypeValue = this.selectTypeElement.value;
 
     if (this.selectTypeValue === 'income') {
-      if(this.arraySelectIncome !== null)
-      this.arraySelectIncome.forEach(item => {
-        this.options = document.createElement("option");
-        this.options.value = item.id;
-        this.options.text = item.title;
-        this.selectCategory.appendChild(this.options);
-      });
+      if (this.arraySelectIncome !== null)
+        this.arraySelectIncome.forEach(item => {
+          this.options = document.createElement("option");
+          this.options.value = item.id;
+          this.options.text = item.title;
+          this.selectCategory.appendChild(this.options);
+        });
     } else {
-      if(this.arraySelectIncome !== null)
-      this.arraySelectExpense.forEach(item => {
-        this.options = document.createElement("option");
-        this.options.value = item.id;
-        this.options.text = item.title;
-        this.selectCategory.appendChild(this.options);
-      });
+      if (this.arraySelectIncome !== null)
+        this.arraySelectExpense.forEach(item => {
+          this.options = document.createElement("option");
+          this.options.value = item.id;
+          this.options.text = item.title;
+          this.selectCategory.appendChild(this.options);
+        });
     }
   }
 }

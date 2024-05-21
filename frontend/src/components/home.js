@@ -13,6 +13,8 @@ export class Home extends Popup {
     this.inputDataToHome = document.getElementById('dataToHome')
     this.pieCanvasIncome = document.getElementById("pieChartIncome");
     this.pieCanvasExpense = document.getElementById("pieChartExpense");
+    this.inputDateType = document.querySelectorAll(".input-interval");
+
     this.token = localStorage.getItem(Auth.accessToken)
     this.userInfo = Auth.getUserInfo()
     this.array = []
@@ -45,6 +47,19 @@ export class Home extends Popup {
           ]
         }]
     }
+
+
+    this.inputDateType.forEach(e => {
+      e.addEventListener("focusin", function (ev) {
+        e.type = 'date';
+      })
+    });
+    this.inputDateType.forEach(e => {
+      e.addEventListener("focusout", function (ev) {
+        e.type = 'text';
+      })
+    });
+
 
     this.initTabHome()
     this.initDate()

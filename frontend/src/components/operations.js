@@ -12,12 +12,25 @@ export class Operations extends Popup{
     this.tabContent = document.getElementById('tabs-content')
     this.inputDataFrom = document.getElementById('dataFrom')
     this.inputDataTo = document.getElementById('dataTo')
+    this.inputTypeDate = document.querySelectorAll(".operations-date");
     this.idLocalStorage = 'idIncomeAndExpense'
     this.atrribut = null
     this.token = localStorage.getItem(Auth.accessToken)
     this.array = []
     this.selectTypeElement = null
     this.selectTypeValue = null
+
+
+    this.inputTypeDate.forEach(e => {
+      e.addEventListener("focusin", function (ev) {
+        e.type = 'date';
+      })
+    });
+    this.inputTypeDate.forEach(e => {
+      e.addEventListener("focusout", function (ev) {
+        e.type = 'text';
+      })
+    });
 
     if(init) {
       this.initTabs()

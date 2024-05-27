@@ -91,6 +91,15 @@
           margin-bottom: 1.2rem;
         }
 
+        input[type=date]::-webkit-inner-spin-button,
+        input[type=date]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+        }
+
+        input[type=date] {
+          -moz-appearance: textfield;
+        }
+
         .input-interval {
           width: 6.3rem;
 
@@ -144,6 +153,10 @@
 
       .tabs-content-item {
         min-width: 104rem;
+
+        canvas {
+          max-height: 100%;
+        }
 
         @include respond(tab-land) {
           flex-direction: column;

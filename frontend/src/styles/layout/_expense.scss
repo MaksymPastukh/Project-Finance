@@ -48,13 +48,17 @@
         }
       }
 
-      a {
-        .button {
+      .button {
+        width: 12.8rem;
+        background: #0d6efd;
+        text-align: center;
+
+        font-family: 'Roboto-Regular', sans-serif;
+
+        &.edit-category{
           width: 12.8rem;
           background: #0d6efd;
-          text-align: center;
           margin-left: 0;
-          font-family: 'Roboto-Regular', sans-serif;
         }
       }
 

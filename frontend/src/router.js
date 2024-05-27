@@ -1,6 +1,16 @@
-import {Signup} from "./components/sign-up.js";
-import {Login} from "./components/login.js";
+import {SignupLogin} from "./components/signup-login.js";
+import {Home} from "./components/home.js";
 import {SideBar} from "./components/side-bar.js";
+import {Income} from "./components/income.js";
+import {IncomeEditing} from "./components/income-editing.js";
+import {IncomeCreating} from "./components/income-creating.js";
+import {Expense} from "./components/expense.js";
+import {ExpenseEditing} from "./components/expense-editing.js";
+import {ExpenseCreating} from "./components/expense-creating.js";
+import {Operations} from "./components/operations.js";
+import {OperationsCreate} from "./components/operations-create.js";
+import {OperationsEditing} from "./components/operations-editing.js";
+import {Logout} from "./components/logout.js";
 
 export class Router {
   constructor() {
@@ -16,6 +26,8 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Home()
+        new Logout()
       }
     }, {
       route: '#/login',
@@ -24,7 +36,7 @@ export class Router {
       styles: this.styles,
       layout: false,
       load: () => {
-        new Login()
+        new SignupLogin('login')
       }
     }, {
       route: '#/signup',
@@ -33,44 +45,51 @@ export class Router {
       styles: this.styles,
       layout: false,
       load: () => {
-        new Signup()
+        new SignupLogin('signup')
       }
     }, {
       route: '#/income-expenses',
-      title: 'income-Expenses',
-      template: 'templates/income-expenses.html',
+      title: 'Income-Expenses',
+      template: 'templates/operations.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new Operations()
+
       }
     }, {
       route: '#/income-expenses-create',
       title: 'Income-Expenses-Create',
-      template: 'templates/income-expenses-create.html',
+      template: 'templates/operations-create.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
         new SideBar()
-
+        new Logout()
+        new OperationsCreate()
       }
     }, {
       route: '#/income-expenses-edit',
       title: 'Income-Expenses-Edit',
-      template: 'templates/income-expenses-editing.html',
+      template: 'templates/operations-editing.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new OperationsEditing()
       }
     }, {
       route: '#/expense-category',
-      title: 'expense category',
+      title: 'Expense category',
       template: 'templates/expense-category.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Expense()
       }
     }, {
       route: '#/expense-create',
@@ -80,24 +99,31 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new ExpenseCreating()
       }
     }, {
       route: '#/expense-edit',
-      title: 'expense edit',
+      title: 'Expense edit',
       template: 'templates/expense-editing-category.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new ExpenseEditing()
       }
     }, {
       route: '#/income-category',
-      title: 'income category',
+      title: 'Income category',
       template: 'templates/income-category.html',
       layout: 'templates/layout.html',
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new Income()
+
       }
     }, {
       route: '#/income-create',
@@ -107,6 +133,8 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new IncomeCreating()
       }
     }, {
       route: '#/income-edit',
@@ -116,6 +144,8 @@ export class Router {
       styles: this.styles,
       load: () => {
         new SideBar()
+        new Logout()
+        new IncomeEditing()
       }
     },
     ]
@@ -132,21 +162,21 @@ export class Router {
       return
     }
 
-    if(newRoute) {
+    if (newRoute) {
       this.contentTitle.innerText = newRoute.title
 
-      if(newRoute.template) {
+      if (newRoute.template) {
         let contentBlock = this.contentElement
-        if(newRoute.layout) {
-            this.contentElement.innerHTML = await fetch(newRoute.layout)
-              .then(response => response.text())
-            contentBlock = document.getElementById('content-layout')
+        if (newRoute.layout) {
+          this.contentElement.innerHTML = await fetch(newRoute.layout)
+            .then(response => response.text())
+          contentBlock = document.getElementById('content-layout')
         }
 
         contentBlock.innerHTML = await fetch(newRoute.template).then(response => response.text())
       }
 
-        if(newRoute.load && typeof newRoute.load === 'function') {
+      if (newRoute.load && typeof newRoute.load === 'function') {
         newRoute.load()
       }
     }
